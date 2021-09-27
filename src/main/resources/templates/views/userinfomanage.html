@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../assets/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/view.css"/>
+    <link rel="icon" href="/favicon.ico">
+    <title>信息管理</title>
+</head>
+<body class="layui-view-body">
+    <div class="layui-content">
+        <div class="layui-page-header">
+            <div class="pagewrap">
+                <span class="layui-breadcrumb">
+                  <a href="">首页</a>
+                  <a href="">用户</a>
+                  <a><cite>信息管理</cite></a>
+                </span>
+                <h2 class="title">信息管理</h2>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <div class="form-box">
+                        <div class="layui-form layui-form-item">
+                            <div class="layui-input-block">
+                                <div class="layui-form-mid">姓名：</div>
+                                <div class="layui-input-block" style="width: 100px;">
+                                  <input type="text" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid">学号：</div>
+                                <div class="layui-input-block" style="width: 100px;">
+                                  <input type="text" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid">学院：</div>
+                                <div class="layui-input-block" style="width: 100px;">
+                                  <input type="text" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid">状态</div>
+                                <div class="layui-input-block" style="width: 100px;">
+                                  <input type="text" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid">信誉</div>
+                                <div class="layui-input-block" style="width: 100px;">
+                                  <input type="text" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-item layui-form-text">
+                                  <label class="layui-form-label">签名</label>
+                                  <div class="layui-input-block">
+                                    <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                  </div>
+                                </div>
+                                <button class="layui-btn layui-btn-blue">提交</button>
+                                <button class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/layui.all.js"></script>
+</body>
+</html>
