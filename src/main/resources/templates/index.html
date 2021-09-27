@@ -106,14 +106,14 @@
     <p class="entrance_title">登录</p>
     <p class="closebtn">X</p>
     <hr style="clear: both">
-    <form action="@{/login}" method="post" name="loginForm">
+    <form action="./login" method="post" name="loginForm">
         <select class="choice" name="identity" id="identity" required autofocus>
             <option value="" id="choose_all" selected>选择身份</option>
             <option value="1">学生</option>
             <option value="0">管理员</option>
         </select><br>
-        <input type="text" name="account" id="sno" placeholder="学号" required><br>
-        <input type="password" name="password" id="pwd" placeholder="密码" required><br>
+        <input type="text" name="account" id="account" placeholder="账号" required><br>
+        <input type="password" name="password" id="password" placeholder="密码" required><br>
         <!--        记录登录信息尚未实现-->
         <input type="checkbox" id="check" name="autoLog">下次自动登录<br>
         <input type="button" value="登录" class="loginbtn" id="loginBtn" onclick="login()">
@@ -204,33 +204,34 @@
 
     function login() {
         let identity = $("#identity>option:selected").val();
-        console.log($('#sno').val());
+        console.log($('#account').val());
         $.ajax({
-            url: "/Library/user/login",
+            url: "/user/login",
             type: "POST",
-            data:
+            data:JSON.stringify(
                 {
-                    "identity": identity,
-                    "sno": $("#sno").val(),
-                    "password": $("#pwd").val()
-                },
-            dataType: "TEXT",
+                    "account": $("#account").val(),
+                    "password": $("#password").val()
+                }),
+            dataType: "json",
+            contentType: "application/json;charset=UTF-8",
             success: function (response) {
-                $("#errMsg").empty();
-                if (response.trim() == "OK") {
-                    /** 将身份信息共享，不同身份主页面呈现不同
-                     * 如果是学生，则为当前页面
-                     * 如果是管理员，则信息显示方面与权限方面有所差别
-                     */
-                    if (identity == 1) { // student
-                        window.location.href = "/Library/main/library.jsp";
-                    } else if (identity == 0) { // manager
-                        window.location.href = "/Library/main/library.jsp";
-                    }
-                } else {
-                    $("#errMsg").text(response);
-                    $("#sno").focus();
-                }
+                alert(response)
+                // $("#errMsg").empty();
+                // if (response.trim() == "OK") {
+                //     /** 将身份信息共享，不同身份主页面呈现不同
+                //      * 如果是学生，则为当前页面
+                //      * 如果是管理员，则信息显示方面与权限方面有所差别
+                //      */
+                //     if (identity == 1) { // student
+                //         window.location.href = "/Library/main/library.jsp";
+                //     } else if (identity == 0) { // manager
+                //         window.location.href = "/Library/main/library.jsp";
+                //     }
+                // } else {
+                //     $("#errMsg").text(response);
+                //     $("#sno").focus();
+                // }
             }
         })
     }

@@ -1,5 +1,6 @@
 package com.librarySystem.Demo.controller;
 
+import com.librarySystem.Demo.entity.testUser;
 import com.librarySystem.Demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,8 +21,15 @@ public class UserController {
         String account = info.get("account");
         String password = info.get("password");
         System.out.println(account+"\t"+password);
-//        userService.login(account,password);
-        return 1;
+        testUser tu = (testUser) userService.login(account,password);
+        if (tu!=null){
+            System.out.println(tu.getSname());
+            return 1;
+        }
+        else {
+            System.out.println("不存在该用户");
+            return 0;
+        }
     }
 
 }

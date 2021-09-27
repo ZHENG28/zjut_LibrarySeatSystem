@@ -1,30 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.librarySystem.Demo.dao">
+<mapper namespace="com.librarySystem.Demo.dao.UserDAO">
 
+<!--	这里是写给测试类的 Mapper-->
 	<resultMap id="getUser"
-		type="com.springbootproject.demo.entity.User">
-		<id column="id" property="id" />
-		<result column="UserName" property="UserName" />
-		<result column="UserPassword" property="UserPassword" />
-		<result column="name" property="name" />
-		<result column="roles" property="roles" />
-		<result column="imglink" property="imglink" />
-		<result column="UserID" property="UserID" />
-		<result column="VideoCount" property="VideoCount" />
+		type="com.librarySystem.Demo.entity.testUser">
+		<id column="sno" property="sno" />
+		<result column="sname" property="sname" />
+		<result column="pswd" property="password" />
+		<result column="gender" property="gender" />
+		<result column="campus" property="campus" />
+		<result column="birthday" property="birthday" />
+		<result column="occipyseat" property="occipyseat" />
+		<result column="state" property="state" />
+		<result column="violatetime" property="violatetime"/>
+		<result column="idadress" property="idadress"/>
 	</resultMap>
 
-	<select id="login">
-
+	<select id="login" resultMap="getUser">
+		select * from t_studentinfo where sno = #{sno} and pswd = #{password}
 	</select>
-
-	<insert id="register">
-	</insert>
-
-	<update id="updateInfo">
-	</update>
-
-	<delete id="deleteUser">
-	</delete>
 
 </mapper>

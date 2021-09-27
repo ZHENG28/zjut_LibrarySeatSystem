@@ -4,6 +4,7 @@ public class User {
 
     private int identity;
 
+
     public int getIdentity() {
         return identity;
     }
@@ -11,4 +12,5 @@ public class User {
     public void setIdentity(int identity) {
         this.identity = identity;
     }
+
 }

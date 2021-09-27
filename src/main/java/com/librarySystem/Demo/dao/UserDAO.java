@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserDAO {
 
-    User login(String username, String password);
+    User login(String sno, String password);
 
     //以下都没做
     User searchUserById(String id);

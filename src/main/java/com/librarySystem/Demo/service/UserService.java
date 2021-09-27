@@ -11,9 +11,8 @@ public class UserService {
     @Autowired
     UserDAO userDAO;
 
-    public boolean login(String username,String password){
-        if (userDAO.login(username,password)!=null) return true;
-        return false;
+    public User login(String username,String password){
+        return userDAO.login(username,password);
     }
 
     public boolean register(){
