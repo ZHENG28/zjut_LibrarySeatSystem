@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.librarySystem.Demo.dao">
+
+	<resultMap id="getUser"
+		type="com.springbootproject.demo.entity.User">
+		<id column="id" property="id" />
+		<result column="UserName" property="UserName" />
+		<result column="UserPassword" property="UserPassword" />
+		<result column="name" property="name" />
+		<result column="roles" property="roles" />
+		<result column="imglink" property="imglink" />
+		<result column="UserID" property="UserID" />
+		<result column="VideoCount" property="VideoCount" />
+	</resultMap>
+
+	<insert id="register">
+	</insert>
+
+	<update id="updateInfo">
+	</update>
+
+	<delete id="deleteUser">
+	</delete>
+
+</mapper>
