@@ -1,0 +1,358 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: cursive;
+    box-sizing: border-box;
+}
+body{
+    background-color: cadetblue;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+
+}
+/*头*/
+header{
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height:60px;
+    z-index: 9999;
+    justify-content: space-between;
+    padding: 10px 50px;   
+    background-color: rgba(50, 90, 90, 0.8);
+}
+header .badge_tile{
+    position: relative;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-bottom: 100px;
+    width: 400px;
+    padding-top: 2%;
+    color: rgba(255, 255, 255, 0.9);
+}
+header ul{
+    list-style: none;
+    position: relative;
+    display: flex;
+    
+}
+header .headline_right  li{
+    width: 150px;
+    position: relative;
+    text-align: center;
+    padding-top: 2%;
+    border-radius: 10px;
+    
+    
+}
+/*隐藏子列表*/
+header dl{
+    width: 150px;
+    position: absolute;
+    padding: 20px 20px;
+    border: 0;
+    border-radius: 2px;
+    outline: none;
+    z-index: 1;
+    text-align: center;
+     background-color: rgba(70,120, 120, 1);
+    border-radius: 0 0 10px 10px;
+    opacity: 0;
+    
+    
+}
+/*hover显示*/
+header .headline_right li:hover{
+    background-color: rgba(70,120, 120, 1);
+}
+header .headline_right li:hover dl{
+     opacity: 1;
+}
+header .headline_right li:hover dl dd{
+    height: 30px;
+    margin: 10px;
+    border-radius: 10px;
+    
+}
+/*颜色待定*/
+header .headline_right li dl:hover dd{
+/*    background-color: rgba(70,120, 90, 1);*/
+}
+
+header a{
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+header  dl dd{
+    overflow: hidden;
+    height: 0;
+    transition: height 0.3s ;
+}
+/*图片*/
+.outer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+    float: left;
+}
+
+.outer .pct {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: all linear 0.8s;
+  overflow: hidden;
+    opacity: 0;
+}
+
+.outer .img {
+  width: 100%;
+  height: 90%;
+  position: absolute;
+  z-index: 50;
+}
+/*左下角弹框*/
+.outer .pct .bottom_content {
+  position: absolute;
+  z-index: 100;
+  color: white;
+  background-color: rgba(0, 0, 0, .6);
+  padding: 30px 50px;
+
+  bottom: 69px;
+  width: 50%;
+    height: 25%;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.outer .pct .bottom_content h1 {
+  margin-bottom: 10px;
+}
+.left_arrows,.right_arrows{
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.8);
+    
+}
+.left_arrows{
+    padding-left: 29%;
+    padding-top: 11%;
+}
+.right_arrows{
+    padding-left: 36%;
+    padding-top: 11%;
+}
+/*左右按钮*/
+.leftbtn {
+   position: absolute;
+    z-index: 150;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.6);
+    left: 50px;
+    transition: all 0.3s;
+    cursor: pointer;
+    top: 40%;
+}
+
+.rightbtn {
+  position: absolute;
+    z-index: 150;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.6);
+    right: 50px;
+    transition: all 0.3s;
+    cursor: pointer;
+    top: 40%;
+  
+}
+
+.outer .pct.first {
+  opacity: 1;
+}
+
+.outer .pct.first .bottom_content {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 1s ease-in-out 0.5s;
+}
+
+.leftbtn:hover,.rightbtn:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+  color: black;
+}
+
+
+/*预约按钮*/
+ .enterbtn{
+     width: 150px;
+     height: 50px;
+     position: absolute;
+     background-color: rgba(255, 255, 255, 0.5);
+     z-index: 9999;
+     text-align: center;
+     margin-left:80%; 
+     top: 550px;
+     border-radius: 10px;
+     padding-top: 10px;
+    }
+.enterbtn a{
+     position: relative;
+    text-decoration: none;
+     color: black;
+    font-weight: 700;
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+footer{
+    text-align: center;
+}
+/*校徽*/
+.badge{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+/*登录弹窗*/
+#background{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    display: none;
+}
+#entrance{
+    width: 250px;
+    height: 330px;
+    position: absolute;
+    background-color: white;
+    top: 20%;
+    left: 40%;
+    z-index: 10000;
+    line-height: 45px;
+    border-radius: 8px;
+    outline: none;
+    display: none;
+}
+#entrance .entrance_title{
+/*    text-align: center;*/
+    font-size: 25px;
+    position: absolute;
+    margin-left:100px;
+}
+
+.entrance_title{
+    font-weight: bold;
+}
+
+input[type=text],input[type=password]{
+    width: 210px;
+    height: 30px;
+    outline: none;
+    border: 1px solid grey;
+    color: grey;
+    font-size: 15px;
+    margin-left: 20px;
+}
+input[type=checkbox],.choice{
+    margin-left: 20px;
+}
+.choice{
+    width: 210px;
+    height: 30px;
+    font-size: 15px;
+    outline: none;
+    margin-top: 20px;
+    
+}
+.choice #choose_all{
+    color: grey;
+}
+input[type=checkbox]{
+    width: 12px;
+    height: 10px;
+    
+}
+#check{
+    font-size: 9px;
+}
+.loginbtn{
+    width: 210px;
+    height: 40px;
+    background-color: rgb(80,150,200);
+    outline: none;
+    border-radius: 5px;
+    border: 0;
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.closebtn{
+    position: relative;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    right: 10px;
+}
+.closebtn,.confirmbtn:hover{
+    cursor: pointer;
+}
+#rule{
+    position: relative;
+    width: 950px;
+    height: 590px;
+    position: absolute;
+    background-color: white;
+    top: 6%;
+    left: 12%;
+    z-index: 1000100;
+    display: none;
+    
+/*    border: 1px solid grey;*/
+    border-radius: 6px;
+    outline: none;
+}
+.rule_title{
+    float: left;
+    font-size: 25px;
+    position: absolute;
+    margin-left:20px;
+    margin-top: 10px;
+    font-weight: bold;
+    position: relative;
+}
+#rule .written{
+    width: 900px;
+    height: 450px;
+    line-height: 25px;
+    margin-left: 35px;
+    
+    margin-top: 10px;
+    overflow-y: scroll;
+}
+.confirmbtn{
+     width: 85px;
+    height: 40px;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 440px;
+    border-radius: 5px;
+    outline: none;
+    border: 0;
+    background-color: rgb(80,150,200);
+}
+
