@@ -14,6 +14,10 @@
 		<result column="VideoCount" property="VideoCount" />
 	</resultMap>
 
+	<select id="login">
+
+	</select>
+
 	<insert id="register">
 	</insert>
 
