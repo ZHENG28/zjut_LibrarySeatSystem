@@ -1,7 +1,7 @@
-import * as THREE from '../three.js-master/build/three.module.js';
+import * as THREE from '/main/three.js-master/build/three.module.js';
 
-import {OBJLoader} from '../three.js-master/examples/jsm/loaders/OBJLoader.js';
-import {MTLLoader} from '../three.js-master/examples/jsm/loaders/MTLLoader.js';
+import {OBJLoader} from '/main/three.js-master/examples/jsm/loaders/OBJLoader.js';
+import {MTLLoader} from '/main/three.js-master/examples/jsm/loaders/MTLLoader.js';
 
 let container;
 
@@ -18,10 +18,11 @@ animate();
 function init() {
 
     container = document.createElement('div');
-    document.getElementById("zh-map").appendChild(container);
+    // container.style.position = 'absolute';
+    document.getElementById("pf-map").appendChild(container);
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
-    camera.position.z = 13;
+    camera.position.z = 31;
 
     // scene
     scene = new THREE.Scene();
@@ -53,10 +54,10 @@ function init() {
 
     const mtlLoader = new MTLLoader();
     const objLoader = new OBJLoader(manager);
-    mtlLoader.load('../main/model/zh.mtl', function (mtl) {
+    mtlLoader.load('../main/model/pf/pf.mtl', function (mtl) {
         mtl.preload();
         objLoader.setMaterials(mtl);
-        objLoader.load('../main/model/zh.obj', function (obj) {
+        objLoader.load('../main/model/pf/pf.obj', function (obj) {
             object = obj;
         }, onProgress, onError);
     });

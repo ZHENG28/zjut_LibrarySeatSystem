@@ -8,51 +8,66 @@
     <title></title>
 </head>
 <body class="layui-view-body">
-    <div class="layui-content">
-        <div class="layui-row layui-col-space20">
-            <div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
-                <div class="layui-card" id="zh-map">
-                    <script src="../main/js/zh.js" type="module"></script>
-                </div>
+<div class="layui-content">
+    <div class="layui-row layui-col-space20">
+        <div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
+            <div class="layui-card" id="zh-map">
+                <script src="../main/js/zh/zh.js" type="module"></script>
             </div>
-            <div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
-                <div class="layui-card" id="pf-map">
-                    <script src="../main/js/pf.js" type="module"></script>
-                </div>
+            <a href="/toZHfloor">朝晖校区</a>
+        </div>
+        <div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
+            <div class="layui-card" id="pf-map" onclick="toPFfloor()">
+                <script src="../main/js/pf/pf.js" type="module"></script>
             </div>
-            <div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
-                <div class="layui-card" id="mgs-map">
-                    <script src="../main/js/mgs.js" type="module"></script>
-                </div>
+            <a href="/toPFfloor">屏峰校区</a>
+        </div>
+        <div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
+            <div class="layui-card" id="mgs-map" onclick="toMGSfloor()">
+                <script src="../main/js/mgs/mgs.js" type="module"></script>
             </div>
-            <div class="layui-col-xs6 layui-col-md12 layui-inline">
-                <div class="layui-card">
-                    <div class="layui-card-body chart-card">
-                        <div class="chart-header">
-                            <div class="metawrap">
-                                <div class="meta">
-                                    <span></span>
-                                </div>
-                                <div class="total"></div>
+            <a href="/toMGSfloor">莫干山校区</a>
+        </div>
+        <div class="layui-col-xs6 layui-col-md12 layui-inline">
+            <div class="layui-card">
+                <div class="layui-card-body chart-card">
+                    <div class="chart-header">
+                        <div class="metawrap">
+                            <div class="meta">
+                                <span></span>
                             </div>
+                            <div class="total"></div>
                         </div>
-                        <div class="chart-body">
-                            <div class="contentwrap">
-                            </div>
+                    </div>
+                    <div class="chart-body">
+                        <div class="contentwrap">
                         </div>
-                        <div class="chart-footer">
-                            <div class="field">
-                                <span>选中预览</span>
-                            </div>
+                    </div>
+                    <div class="chart-footer">
+                        <div class="field">
+                            <span>选中预览</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="../assets/layui.all.js"></script>
-    <script>
-     var element = layui.element;
-    </script>
+</div>
+<script src="../assets/layui.all.js"></script>
+<script>
+    var element = layui.element;
+
+    function toZHfloor() {
+        // return "";
+    }
+
+    function toPFfloor() {
+
+    }
+
+    function toMGSfloor() {
+
+    }
+</script>
 </body>
 </html>

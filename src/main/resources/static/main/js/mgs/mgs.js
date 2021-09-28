@@ -1,7 +1,7 @@
-import * as THREE from '../three.js-master/build/three.module.js';
+import * as THREE from '/main/three.js-master/build/three.module.js';
 
-import {OBJLoader} from '../three.js-master/examples/jsm/loaders/OBJLoader.js';
-import {MTLLoader} from '../three.js-master/examples/jsm/loaders/MTLLoader.js';
+import {OBJLoader} from '/main/three.js-master/examples/jsm/loaders/OBJLoader.js';
+import {MTLLoader} from '/main/three.js-master/examples/jsm/loaders/MTLLoader.js';
 
 let container;
 
@@ -54,10 +54,10 @@ function init() {
 
     const mtlLoader = new MTLLoader();
     const objLoader = new OBJLoader(manager);
-    mtlLoader.load('../main/model/mgs.mtl', function (mtl) {
+    mtlLoader.load('../main/model/mgs/mgs.mtl', function (mtl) {
         mtl.preload();
         objLoader.setMaterials(mtl);
-        objLoader.load('../main/model/mgs.obj', function (obj) {
+        objLoader.load('../main/model/mgs/mgs.obj', function (obj) {
             object = obj;
         }, onProgress, onError);
     });
