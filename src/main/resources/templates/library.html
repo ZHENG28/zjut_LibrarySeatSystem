@@ -19,168 +19,176 @@
     <link type="text/css" rel="stylesheet" href="main/three.js-master/examples/main.css">
 </head>
 <body>
-    <header>
-        <h3 class="hd" id="up">图书馆订座系统</h3>
-        <h4 style="float: left;text-shadow: 3px 3px 3px rgba(0, 0, 0, .29);">浙江工业大学图书馆</h4>
-        <div id="hddiv">
-            <ul>
-                <img id="sheadSculpture" src="img/Hime.png" height="25px">
-                <span class="name">许元澍∨</span>
-                <li style="top: 33px" class="identity_sign">个人信息</li>
-                <li style="top: 59px">
-                    <a class="dl">更改密码</a>
-                </li>
-                <li style="top: 85px">
-                    <a onclick="show_confirm()">退出登录</a>
-                    <script>
-                        function show_confirm(){
-                            let answer = confirm("您确定要退出吗？");
-                            if (answer == true) {
-                                self.location = "../home/homePage.html"
-                            }
+<header>
+    <h3 class="hd" id="up">图书馆订座系统</h3>
+    <h4 style="float: left;text-shadow: 3px 3px 3px rgba(0, 0, 0, .29);">浙江工业大学图书馆</h4>
+    <div id="hddiv">
+        <ul>
+            <img id="sheadSculpture" src="img/Hime.png" height="25px">
+            <span class="name">许元澍∨</span>
+            <li style="top: 33px" class="identity_sign">个人信息</li>
+            <li style="top: 59px">
+                <a class="dl">更改密码</a>
+            </li>
+            <li style="top: 85px">
+                <a onclick="show_confirm()">退出登录</a>
+                <script>
+                    function show_confirm() {
+                        let answer = confirm("您确定要退出吗？");
+                        if (answer == true) {
+                            self.location = "../home/homePage.html"
                         }
-                    </script>
+                    }
+                </script>
+            </li>
+        </ul>
+    </div>
+    <!--        <div id="language">切换语言</div>-->
+</header>
+<div id="wrapper">
+    <aside class="sidebar">
+        <div id="yourself">
+            <div id="headSculpture" title="放大">
+            </div>
+            <div class="PersonalInfo">
+                <ul>
+                    <li><span class="fixedtip">学 号 ：</span><span>20000905</span></li>
+                    <li><span class="fixedtip">姓 名 ：</span><span>xyshu</span></li>
+                    <li><span class="fixedtip">占座情况：</span><span>已占</span></li>
+                    <li><span class="fixedtip">当前状态：</span><span>暂离</span></li>
+                    <li><span class="fixedtip">违规次数：</span><span>∞</span></li>
+                </ul>
+            </div>
+        </div>
+        <div id="switch">
+            <ul id="nav">
+                <li class="layer1" id="first" style="display: list-item">
+                    <span>当前选中场馆：</span>
+                    <div style="float:right;display: block">
+                        <ul id="menu" class="menu">
+                            <li id="zhaohui">朝晖</li>
+                            <li id="pingfeng" style="top: 41px">屏峰</li>
+                            <li id="deqing" style="top: 72px">德清</li>
+                        </ul>
+                    </div>
+                </li>
+                <li id="second" style="color:deepskyblue;">
+                    <span>当前选中楼层：</span>
+                    <div style="float:right;display: block">
+                        <ul id="floor" class="menu">
+                            <li id="1F">一楼</li>
+                            <li id="2F" style="top: 77px">二楼</li>
+                            <li id="3F" style="top: 108px">三楼</li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </div>
-<!--        <div id="language">切换语言</div>-->
-    </header>
-    <div id="wrapper">
-        <aside class="sidebar">
-            <div id="yourself">
-                <div id="headSculpture" title="放大">
-                </div>
-                <div class="PersonalInfo">
-                    <ul>
-                        <li><span class="fixedtip">学 号 ：</span><span>20000905</span></li>
-                        <li><span class="fixedtip">姓 名 ：</span><span>xyshu</span></li>
-                        <li><span class="fixedtip">占座情况：</span><span>已占</span></li>
-                        <li><span class="fixedtip">当前状态：</span><span>暂离</span></li>
-                        <li><span class="fixedtip">违规次数：</span><span>∞</span></li>
-                    </ul>
-                </div>
-            </div>
-            <div id="switch">
-                <ul id="nav">
-                    <li class="layer1" id="first" style="display: list-item">
-                        <span>当前选中场馆：</span>
-                        <div style="float:right;display: block">
-                            <ul id="menu" class="menu">
-                                <li id="zhaohui">朝晖</li>
-                                <li id="pingfeng" style="top: 41px">屏峰</li>
-                                <li id="deqing" style="top: 72px">德清</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li id="second" style="color:deepskyblue;">
-                        <span>当前选中楼层：</span>
-                        <div style="float:right;display: block" >
-                            <ul id="floor" class="menu">
-                                <li id="1F">一楼</li>
-                                <li id="2F" style="top: 77px">二楼</li>
-                                <li id="3F" style="top: 108px">三楼</li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <span id="manage" style="float: right;border:1px solid black;display: inline; width: 100%">⊕管理</span>
-        </aside>
-        <div id="haoleia">
+        <span id="manage" style="float: right;border:1px solid black;display: inline; width: 100%">⊕管理</span>
+    </aside>
+    <div id="haoleia">
             <span>
                 <button id="sidebto"></button>
                 <span id="info"> 选楼： </span>
                 <button id="xys">删除空白</button>
             </span>
-            <br>
+        <br>
 
-            <div id="outmap">
+        <div id="outmap" style="display: flex; justify-content: space-around;">
 
-                <script src="main/js/obj.js" type="module"></script>
+            <script src="main/js/zh.js" type="module"></script>
+            <script src="main/js/pf.js" type="module"></script>
+            <script src="main/js/mgs.js" type="module"></script>
 
-<!--                <img id="eventmap" src="img/house.png">-->
-                <div id="seat-map1" class="seat-map">
-                    <div class="front-indicator">北</div>
-                    <div class="booking-details">
-                        <h3>已选中的座位 (<span id="counter">0</span>):</h3>
-                        <ul id="selected-seats"></ul>
-                        <!-- <p>总价: <b>$<span id="total">0</span></b></p> -->
-                        <p><button class="checkout-button">确定</button></p>
-                        <div id="legend"></div>
-                    </div>
+            <!--                <img id="eventmap" src="img/house.png">-->
+            <div id="seat-map1" class="seat-map">
+                <div class="front-indicator">北</div>
+                <div class="booking-details">
+                    <h3>已选中的座位 (<span id="counter">0</span>):</h3>
+                    <ul id="selected-seats"></ul>
+                    <!-- <p>总价: <b>$<span id="total">0</span></b></p> -->
+                    <p>
+                        <button class="checkout-button">确定</button>
+                    </p>
+                    <div id="legend"></div>
                 </div>
             </div>
-
-                <div id="seat-map2" class="seat-map">
-                    <div class="front-indicator">北</div>
-                    <div class="booking-details">
-                        <h3>已选中的座位 (<span id="counter">0</span>):</h3>
-                        <ul id="selected-seats"></ul>
-                        <!-- <p>总价: <b>$<span id="total">0</span></b></p> -->
-                        <p><button class="checkout-button">确定</button></p>
-                        <div id="legend"></div>
-                    </div>
-                </div>
-
-                <div id="seat-map3" class="seat-map">
-                    <div class="front-indicator">北</div>
-                    <div class="booking-details">
-                        <h3>已选中的座位 (<span id="counter">0</span>):</h3>
-                        <ul id="selected-seats"></ul>
-                        <!-- <p>总价: <b>$<span id="total">0</span></b></p> -->
-                        <p><button class="checkout-button">确定</button></p>
-                        <div id="legend"></div>
-                    </div>
-                </div>
-
-            </div>
-
         </div>
-            <div id="top">
-                <a href="#up">回到顶部</a>
+
+        <div id="seat-map2" class="seat-map">
+            <div class="front-indicator">北</div>
+            <div class="booking-details">
+                <h3>已选中的座位 (<span id="counter">0</span>):</h3>
+                <ul id="selected-seats"></ul>
+                <!-- <p>总价: <b>$<span id="total">0</span></b></p> -->
+                <p>
+                    <button class="checkout-button">确定</button>
+                </p>
+                <div id="legend"></div>
             </div>
-
-
-    <div id="bg"></div>
-    <div id="ChangePassword">
-        <div id="title">&nbsp;&nbsp;&nbsp;&nbsp;更改密码
-            <a class="close" href="javascript:">X</a>
         </div>
-        <form action="javascript:" target=""><!--将action中的内容删去就会刷新页面-->
-            <p>原密码: <input type="password" class="psw" maxlength="16"></p>
-            <p>新密码: <input type="password" class="psw" maxlength="16"></p>
-            <p><input type="submit" class="sub" value="确认"></p>
-        </form>
+
+        <div id="seat-map3" class="seat-map">
+            <div class="front-indicator">北</div>
+            <div class="booking-details">
+                <h3>已选中的座位 (<span id="counter">0</span>):</h3>
+                <ul id="selected-seats"></ul>
+                <!-- <p>总价: <b>$<span id="total">0</span></b></p> -->
+                <p>
+                    <button class="checkout-button">确定</button>
+                </p>
+                <div id="legend"></div>
+            </div>
+        </div>
+
     </div>
 
-    <!--个人信息-->
-    <div class="background" id="background"></div>
-    <div class="entrance" id="entrance">
-        <div class="identity_back">
-            <p class="identity_title">个人信息</p>
-            <p class="close">X</p>
-            <hr>
-        </div>
+</div>
+<div id="top">
+    <a href="#up">回到顶部</a>
+</div>
 
-        <form action="/Library/user/identity" method="get" class="identity_bottom">
-            <center><img src="img/%E8%8C%89%E8%8E%89.jpg" id="identity_img"></center>
-            <label>学号：<input type="text" name="sno"  value="111" readonly></label><br>
-            <label>姓名：<input type="text" name="name"  value="mike"  readonly></label><br>
-            <label>身份：<input type="text" name="identity"  value="学生"  readonly></label><br>
-            <label> 校区：<select class="choice" name="campus">
-                <option value="ZH">朝晖</option>
-                <option value="PF">屏峰</option>
-                <option value="MGS">莫干山</option>
-            </select></label><br>
-            <label>性别：<select class="choice" name="gender">
-                <option value="male">男</option>
-                <option value="female">女</option>
-            </select></label><br>
-            <label>生日：<input type="date" name="birthday" ></label>
-            <input type="submit" value="保存" class="submitbtn">
-            <input type="button" value="关闭" class="submitbtn">
-        </form>
+
+<div id="bg"></div>
+<div id="ChangePassword">
+    <div id="title">&nbsp;&nbsp;&nbsp;&nbsp;更改密码
+        <a class="close" href="javascript:">X</a>
     </div>
+    <form action="javascript:" target=""><!--将action中的内容删去就会刷新页面-->
+        <p>原密码: <input type="password" class="psw" maxlength="16"></p>
+        <p>新密码: <input type="password" class="psw" maxlength="16"></p>
+        <p><input type="submit" class="sub" value="确认"></p>
+    </form>
+</div>
+
+<!--个人信息-->
+<div class="background" id="background"></div>
+<div class="entrance" id="entrance">
+    <div class="identity_back">
+        <p class="identity_title">个人信息</p>
+        <p class="close">X</p>
+        <hr>
+    </div>
+
+    <form action="/Library/user/identity" method="get" class="identity_bottom">
+        <center><img src="img/%E8%8C%89%E8%8E%89.jpg" id="identity_img"></center>
+        <label>学号：<input type="text" name="sno" value="111" readonly></label><br>
+        <label>姓名：<input type="text" name="name" value="mike" readonly></label><br>
+        <label>身份：<input type="text" name="identity" value="学生" readonly></label><br>
+        <label> 校区：<select class="choice" name="campus">
+            <option value="ZH">朝晖</option>
+            <option value="PF">屏峰</option>
+            <option value="MGS">莫干山</option>
+        </select></label><br>
+        <label>性别：<select class="choice" name="gender">
+            <option value="male">男</option>
+            <option value="female">女</option>
+        </select></label><br>
+        <label>生日：<input type="date" name="birthday"></label>
+        <input type="submit" value="保存" class="submitbtn">
+        <input type="button" value="关闭" class="submitbtn">
+    </form>
+</div>
 </body>
 
 <footer>
