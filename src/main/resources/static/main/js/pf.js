@@ -7,8 +7,8 @@ let container;
 
 let camera, scene, renderer;
 
-let canvasX = window.innerWidth / 2;
-let canvasY = window.innerHeight / 2;
+let canvasX = window.innerWidth / 3.5;
+let canvasY = window.innerHeight / 3;
 
 let object;
 
@@ -18,11 +18,11 @@ animate();
 function init() {
 
     container = document.createElement('div');
-    container.style.position = 'absolute';
-    document.getElementById("outmap").appendChild(container);
+    // container.style.position = 'absolute';
+    document.getElementById("pf-map").appendChild(container);
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
-    camera.position.z = 42;
+    camera.position.z = 31;
 
     // scene
     scene = new THREE.Scene();
@@ -33,7 +33,6 @@ function init() {
 
     // manager
     function loadModel() {
-        object.position.y = -4;
         scene.add(object);
     }
 
@@ -55,10 +54,10 @@ function init() {
 
     const mtlLoader = new MTLLoader();
     const objLoader = new OBJLoader(manager);
-    mtlLoader.load('main/model/pf.mtl', function (mtl) {
+    mtlLoader.load('../main/model/pf.mtl', function (mtl) {
         mtl.preload();
         objLoader.setMaterials(mtl);
-        objLoader.load('main/model/pf.obj', function (obj) {
+        objLoader.load('../main/model/pf.obj', function (obj) {
             object = obj;
         }, onProgress, onError);
     });
@@ -82,7 +81,7 @@ function onWindowResize() {
 function animate() {
     requestAnimationFrame(animate);
     // 设置物体自动旋转
-    object.rotation.y = Date.now() * 0.001;
+    object.rotation.y = Date.now() * 0.0004;
     render();
 }
 
