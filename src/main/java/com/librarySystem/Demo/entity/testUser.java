@@ -93,4 +93,20 @@ public class testUser extends User {
     public void setIdadress(String idadress) {
         this.idadress = idadress;
     }
+
+    @Override
+    public String toString() {
+        return "testUser{" +
+                "sno='" + sno + '\'' +
+                ", sname='" + sname + '\'' +
+                ", password='" + password + '\'' +
+                ", gender=" + gender +
+                ", campus='" + campus + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", occipyseat='" + occipyseat + '\'' +
+                ", state=" + state +
+                ", violatetime=" + violatetime +
+                ", idadress='" + idadress + '\'' +
+                '}';
+    }
 }

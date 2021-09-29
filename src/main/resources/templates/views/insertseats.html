@@ -8,77 +8,77 @@
     <title></title>
 </head>
 <body class="layui-view-body">
-    <div class="layui-content">
-        <div class="layui-row">
-            <div class="layui-card">
-                <div class="layui-card-header"><h1 style="text-align: center;">区域座位表</h1></div>
-                <form class="layui-form layui-card-body" action="">
-                  <div class="layui-form-item">
+<div class="layui-content">
+    <div class="layui-row">
+        <div class="layui-card">
+            <div class="layui-card-header"><h1 style="text-align: center;">区域座位表</h1></div>
+            <form class="layui-form layui-card-body" action="">
+                <div class="layui-form-item">
                     <label class="layui-form-label">座位描述</label>
                     <div class="layui-input-block">
-                      <input type="text" name="title" required  lay-verify="required" placeholder="请输入座位描述：例：1b" autocomplete="off" class="layui-input">
+                        <input type="text" name="title" required  lay-verify="required" placeholder="请输入座位描述：例：1b" autocomplete="off" class="layui-input">
                     </div>
-                  </div>
-                  <div class="layui-form-item">
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">选择院区</label>
                     <div class="layui-input-inline">
-                      <select name="city" lay-verify="required">
-                        <option value="0">朝晖</option>
-                        <option value="1">屏峰</option>
-                        <option value="2">德清</option>
-                      </select>
+                        <select name="city" lay-verify="required">
+                            <option value="0">朝晖</option>
+                            <option value="1">屏峰</option>
+                            <option value="2">德清</option>
+                        </select>
                     </div>
-                  </div>
-                  <div class="layui-form-item">
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">院区</label>
                     <div class="layui-input-block">
-                      <input type="checkbox" name="like[zhaohui]" title="朝晖" checked>
-                      <input type="checkbox" name="like[pingfeng]" title="屏峰">
-                      <input type="checkbox" name="like[deqing]" title="德清">
+                        <input type="checkbox" name="like[zhaohui]" title="朝晖" checked>
+                        <input type="checkbox" name="like[pingfeng]" title="屏峰">
+                        <input type="checkbox" name="like[deqing]" title="德清">
                     </div>
-                  </div>
-                  <div class="layui-form-item">
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">学院</label>
                     <div class="layui-input-block">
-                      <input type="text" name="title" required  lay-verify="required" placeholder="请输入学院" autocomplete="off" class="layui-input">
+                        <input type="text" name="title" required  lay-verify="required" placeholder="请输入学院" autocomplete="off" class="layui-input">
                     </div>
-                  </div>
-                  <div class="layui-form-item">
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">邮箱</label>
                     <div class="layui-input-block">
-                      <input type="text" name="title"  lay-verify="required" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                        <input type="text" name="title"  lay-verify="required" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
                     </div>
-                  </div>
-                  <div class="layui-form-item">
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">开关</label>
                     <div class="layui-input-block">
-                      <input type="checkbox" name="switch" lay-skin="switch">
+                        <input type="checkbox" name="switch" lay-skin="switch">
                     </div>
-                  </div>
-                  <div class="layui-form-item">
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">是否启用</label>
                     <input type="checkbox" name="isable" lay-skin="primary" checked>
-                  </div>
-                  <div class="layui-form-item layui-form-text">
+                </div>
+                <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">座位表</label>
                     <div class="layui-input-block">
-                      <textarea name="desc" placeholder="请输入座位表，例：{eeff__,f____e}" class="layui-textarea"></textarea>
+                        <textarea name="desc" placeholder="请输入座位表，例：{eeff__,f____e}" class="layui-textarea"></textarea>
                     </div>
-                  </div>
-                  <div class="layui-form-item">
+                </div>
+                <div class="layui-form-item">
                     <div class="layui-input-block">
-                      <button class="layui-btn layui-btn-blue" lay-submit lay-filter="formDemo">添加座位</button>
-                      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        <button class="layui-btn layui-btn-blue" lay-submit lay-filter="formDemo">添加座位</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
-                  </div>
-                </form>  
-            </div>
+                </div>
+            </form>
         </div>
     </div>
-    <script src="../assets/layui.all.js"></script>
-    <script>
-        let form = layui.form
+</div>
+<script src="../assets/layui.all.js"></script>
+<script>
+    let form = layui.form
         ,layer = layui.layer;
-    </script>
+</script>
 </body>
 </html>

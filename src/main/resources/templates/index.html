@@ -4,7 +4,7 @@
     <title>首页</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/home/home.css"/>
-    <script src="/home/js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="/main/js/jquery-3.6.0.js"></script>
     <script src="/home/js/animation.js"></script>
 </head>
 
@@ -204,7 +204,6 @@
 
     function login() {
         let identity = $("#identity>option:selected").val();
-        console.log($('#account').val());
         $.ajax({
             url: "/user/login",
             type: "POST",
@@ -216,8 +215,11 @@
             dataType: "json",
             contentType: "application/json;charset=UTF-8",
             success: function (response) {
-                alert(response.username);
-                // $("#errMsg").empty();
+                $("#errMsg").empty();
+                if(response.username.trim() == "error"){
+                    $('#errMsg').text("Login Error!");
+                }
+                else window.location.href = "/main"
                 // if (response.trim() == "OK") {
                 //     /** 将身份信息共享，不同身份主页面呈现不同
                 //      * 如果是学生，则为当前页面

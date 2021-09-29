@@ -28,6 +28,11 @@ public class MainViewController {
         return "main";
     }
 
+    //后台登录页
+    @GetMapping("/admin")
+    public String admin(){
+        return "login";
+    }
     //后台页面
     @GetMapping("/backend")
     public String backend(){

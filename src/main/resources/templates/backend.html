@@ -10,101 +10,100 @@
     <title>管理后台</title>
 </head>
 <body class="layui-layout-body">
-    <div class="layui-layout layui-layout-admin">
-        <div class="layui-header custom-header">
-            
-            <ul class="layui-nav layui-layout-left">
-                <li class="layui-nav-item slide-sidebar" lay-unselect>
-                    <a href="javascript:;" class="icon-font"><i class="ai ai-menufold"></i></a>
-                </li>
-            </ul>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header custom-header">
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item slide-sidebar" lay-unselect>
+                <a href="javascript:;" class="icon-font"><i class="ai ai-menufold"></i></a>
+            </li>
+        </ul>
 
-            <ul class="layui-nav layui-layout-right">
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">Admin</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">帮助中心</a></dd>
+                    <dd><a href="login">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side custom-admin">
+        <div class="layui-side-scroll">
+
+            <div class="custom-logo">
+                <img src="assets/images/logo.png" alt=""/>
+                <h1>欢迎您，管理员 Admin</h1>
+            </div>
+            <ul id="Nav" class="layui-nav layui-nav-tree">
                 <li class="layui-nav-item">
-                    <a href="javascript:;">Admin</a>
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-home"></i>
+                        <em>主页</em>
+                    </a>
                     <dl class="layui-nav-child">
-                        <dd><a href="">帮助中心</a></dd>
-                        <dd><a href="login">退出</a></dd>
+                        <dd><a href="views/console"><i class="layui-icon layui-icon-chart-screen"></i>报表</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-component"></i><!--图标链接：https://www.layui.com/doc/element/icon.html?tdsourcetag=s_pcqq_aiomsg-->
+                        <em>组件</em>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="views/form"><i class="layui-icon layui-icon-form"></i>表单</a></dd>
+                        <dd>
+                            <a href="javascript:;"><i class="layui-icon"></i>页面</a>
+                            <dl class="layui-nav-child">
+                                <dd>
+                                    <a href="login"><i class="layui-icon layui-icon-release"></i>登录页</a>
+                                </dd>
+                            </dl>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-friends"></i>
+                        <em>用户</em>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="views/users"><i class="layui-icon layui-icon-user"></i>用户组</a></dd>
+                        <dd><a href="views/insertuser"><i class="layui-icon layui-icon-upload-circle"></i>添加新用户</a></dd>
+                        <dd><a href="views/operaterule"><i class="layui-icon layui-icon-set-sm"></i>权限配置</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-table"></i>
+                        <em>座位管理</em>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="views/seatinfo"><i class="layui-icon layui-icon-template"></i>座位状态</a></dd>
+                        <dd><a href="views/insertseats"><i class="layui-icon layui-icon-add-circle"></i>添加座位</a></dd>
+                        <dd><a href="views/seatview"><i class="layui-icon layui-icon-print"></i>座位预览</a></dd>
                     </dl>
                 </li>
             </ul>
+
         </div>
-
-        <div class="layui-side custom-admin">
-            <div class="layui-side-scroll">
-
-                <div class="custom-logo">
-                    <img src="assets/images/logo.png" alt=""/>
-                    <h1>欢迎您，管理员 Admin</h1>
-                </div>
-                <ul id="Nav" class="layui-nav layui-nav-tree">
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">
-                            <i class="layui-icon">&#xe68e;</i>
-                            <em>主页</em>
-                        </a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="views/console"><i class="layui-icon">&#xe629;</i>报表</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">
-                            <i class="layui-icon">&#xe857;</i><!--图标链接：https://www.layui.com/doc/element/icon.html?tdsourcetag=s_pcqq_aiomsg-->
-                            <em>组件</em>
-                        </a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="views/form"><i class="layui-icon">&#xe63c;</i>表单</a></dd>
-                            <dd>
-                                <a href="javascript:;"><i class="layui-icon"></i>页面</a>
-                                <dl class="layui-nav-child">
-                                    <dd>
-                                        <a href="login"><i class="layui-icon">&#xe609;</i>登录页</a>
-                                    </dd>
-                                </dl>
-                            </dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">
-                            <i class="layui-icon">&#xe612;</i>
-                            <em>用户</em>
-                        </a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="views/users"><i class="layui-icon">&#xe770;</i>用户组</a></dd>
-                            <dd><a href="views/insertuser"><i class="layui-icon">&#xe62f;</i>添加新用户</a></dd>
-                            <dd><a href="views/operaterule"><i class="layui-icon">&#xe620;</i>权限配置</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">
-                            <i class="layui-icon">&#xe62d;</i>
-                            <em>座位管理</em>
-                        </a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="views/seatinfo"><i class="layui-icon">&#xe663;</i>座位状态</a></dd>
-                            <dd><a href="views/insertseats"><i class="layui-icon">&#xe61f;</i>添加座位</a></dd>
-                            <dd><a href="views/seatview"><i class="layui-icon">&#xe66d;</i>座位预览</a></dd>
-                        </dl>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
-
-        <div class="layui-body">
-             <div class="layui-tab app-container" lay-allowClose="true" lay-filter="tabs">
-                <ul id="appTabs" class="layui-tab-title custom-tab"></ul>
-                <div id="appTabPage" class="layui-tab-content"></div>
-            </div>
-        </div>
-
-        <div class="layui-footer">
-            <p>©运河杯图书馆</p>
-        </div>
-
-        <div class="mobile-mask"></div>
     </div>
-    <script src="assets/layui.js"></script>
-    <script src="assets/custom/js/index.js" data-main="home"></script>
+
+    <div class="layui-body">
+        <div class="layui-tab app-container" lay-allowClose="true" lay-filter="tabs">
+            <ul id="appTabs" class="layui-tab-title custom-tab"></ul>
+            <div id="appTabPage" class="layui-tab-content"></div>
+        </div>
+    </div>
+
+    <div class="layui-footer">
+        <p>©运河杯图书馆</p>
+    </div>
+
+    <div class="mobile-mask"></div>
+</div>
+<script src="assets/layui.js"></script>
+<script src="assets/custom/js/index.js" data-main="home"></script>
 </body>
 </html>
