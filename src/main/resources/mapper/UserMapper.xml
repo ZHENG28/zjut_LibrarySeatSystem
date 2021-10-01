@@ -21,4 +21,17 @@
 		select * from t_studentinfo where sno = #{sno} and pswd = #{password}
 	</select>
 
+	<insert id="register">
+		insert into t_studentinfo(sno,sname,pswd,campus) values(#{sno},#{sname},#{password},#{campus})
+	</insert>
+
+	<select id="getUserbySno" resultMap="getUser">
+		select * from library_seat_selection.t_studentinfo where SNO = #{sno}
+	</select>
+
+	<select id="getUserbyInfos" resultMap="getUser">
+		select * from library_seat_selection.t_studentinfo where SNO like  #{sno} and PSWD like #{password} and CAMPUS like #{campus}
+
+	</select>
+
 </mapper>

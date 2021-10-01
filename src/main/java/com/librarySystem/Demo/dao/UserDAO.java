@@ -8,8 +8,9 @@ public interface UserDAO {
 
     User login(String sno, String password);
 
+    int register(String sno,String sname, String password, String campus);
     //以下都没做
     User searchUserById(String id);
 
-    int register(String username, String password, String campus);
+
 }

@@ -216,7 +216,7 @@
             contentType: "application/json;charset=UTF-8",
             success: function (response) {
                 $("#errMsg").empty();
-                if(response.username.trim() == "error"){
+                if(response.error.trim() == "true"){
                     $('#errMsg').text("Login Error!");
                 }
                 else window.location.href = "/main"

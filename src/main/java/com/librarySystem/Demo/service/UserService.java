@@ -15,7 +15,8 @@ public class UserService {
         return userDAO.login(username,password);
     }
 
-    public boolean register(){
+    public boolean register(String sno,String sname, String password, String campus){
+        if (userDAO.register(sno, sname, password, campus)==1) return true;
         return false;
     }
 }

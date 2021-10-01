@@ -24,6 +24,7 @@ public class UserController {
     public Map<String,String> login(@RequestBody Map<String,String> info,HttpServletRequest request){
         Map<String,String> log = new HashMap<>();
         String error="false";
+        String errInfo="不存在该用户";//未来可能加入“用户不存在”或者“密码错误”的返回信息
         String account = info.get("account");
         String password = info.get("password");
         System.out.println(account+"\t"+password);
@@ -42,33 +43,16 @@ public class UserController {
         return log;
     }
 
-//    @RequestMapping("/login")
-//    public ModelAndView login(@RequestBody Map<String,String> user, ModelAndView mv, HttpServletRequest request, Model model){
-//        System.out.println(user);
-//        testUser login = (testUser) userService.login(user.get("account"),user.get("password"));
-//        System.out.println(login);
-//        if (login!=null){
-//            request.getSession().setAttribute("login",login);
-//            System.out.println("成功！！");
-//            mv.setViewName("main");
-//        }else{
-//            System.out.println("失败！！");
-//            mv.setViewName("index");
-//        }
-//        return mv;
-//    }
-
     //管理员登录
     @PostMapping(value = "/adminlogin")
     @ResponseBody
     public Map<String,String> adminlogin(@RequestBody Map<String,String> user,HttpServletRequest request) {
 
         Map<String,String> log = new HashMap<>();
-        String error="false";
-        String account="";
-        String password="";
-        account = user.get("account");
-        password = user.get("password");
+        String error = "false";
+        String errInfo ="不存在该用户";//未来可能加入“用户不存在”或者“密码错误”的返回信息
+        String account = user.get("account");
+        String password = user.get("password");
         System.out.println("尝试登陆管理员账号:"+account);
         System.out.println("尝试的密码:"+password);
         testUser tu = (testUser) userService.login(account,password);
@@ -80,10 +64,33 @@ public class UserController {
         else {
             System.out.println("登陆失败");
             error="true";
-            log.put("username","error");
+            log.put("username","login error");
         }
         log.put("error",error);
         return log;
+    }
+
+    @PostMapping("/registerUser")
+    @ResponseBody
+    public Map<String,String> register(@RequestBody Map<String,String> user){
+
+        String sno = user.get("sno");
+        String sname = user.get("sname");
+        String password = user.get("password");
+        String campus = user.get("campus");
+        Map<String,String> info = new HashMap<>();
+
+        String error = "false";
+
+        if (userService.register(sno,sname,password,campus)){
+            info.put("info","注册成功");
+        }
+        else {
+            info.put("info","注册失败");
+            error = "true";
+        }
+        info.put("error",error);
+        return info;
     }
 
 }
