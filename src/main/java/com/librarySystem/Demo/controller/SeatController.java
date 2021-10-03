@@ -1,23 +1,27 @@
 package com.librarySystem.Demo.controller;
 
+import com.librarySystem.Demo.entity.Seat;
 import com.librarySystem.Demo.service.SeatService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller
-public class SeatController {
+import java.util.List;
 
+@Controller
+@RequestMapping("/seat")
+public class SeatController
+{
     @Autowired
     SeatService seatService;
 
-    @RequestMapping("/getSeat")
+    @RequestMapping("/getInfo")
     @ResponseBody
-    public JSONObject getSeat(){
+    public List<Seat> getSeatInfo()
+    {
 
-        JSONObject json = new JSONObject();
+//        JSONObject json = new JSONObject();
 //
 //        String sno = request.getParameter("sno");
 //        String campus = request.getParameter("campus");
@@ -30,6 +34,6 @@ public class SeatController {
 //        json.put("seatLayout", seatLayout);
 //        json.put("selected", selected);
 
-        return json;
+        return seatService.getSeatInfo();
     }
 }

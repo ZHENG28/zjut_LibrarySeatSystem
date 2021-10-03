@@ -7,11 +7,13 @@
     <link rel="stylesheet" href="assets/css/layui.css">
     <link rel="stylesheet" href="assets/css/admin.css">
     <link rel="icon" href="/favicon.ico">
-    <title>管理后台</title>
+    <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+    <title>选座系统</title>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header custom-header">
+
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item slide-sidebar" lay-unselect>
                 <a href="javascript:;" class="icon-font"><i class="ai ai-menufold"></i></a>
@@ -20,10 +22,11 @@
 
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
-                <a href="javascript:;"><span th:text="${session.admin.getName}">管理员</span></a>
+                <a href="javascript:;" th:text="${session.user.getName}">用户名</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">帮助中心</a></dd>
-                    <dd><a href="login">退出</a></dd>
+                    <dd><a href="foreend/userInfo">个人信息</a></dd>
+                    <dd><a href="javascript:;">帮助中心</a></dd>
+                    <dd><a href="/logout"><i class="layui-icon layui-icon-return"></i> 退出</a></dd>
                 </dl>
             </li>
         </ul>
@@ -34,36 +37,41 @@
 
             <div class="custom-logo">
                 <img src="assets/images/logo.png" alt=""/>
-                <h1>欢迎您，<span th:text="${session.admin.getName}">管理员</span></h1>
+                <h1>欢迎您，<span th:text="${session.user.getName}">用户名</span></h1>
             </div>
             <ul id="Nav" class="layui-nav layui-nav-tree">
                 <li class="layui-nav-item">
-                    <a href="/backend/homePage">
+                    <a href="foreend/homePage">
                         <i class="layui-icon layui-icon-home"></i>
                         <em>主页</em>
                     </a>
                 </li>
-                <!--座位管理-->
+                <li class="layui-nav-item">
+                    <a href="foreend/seatView">
+                        <i class="layui-icon layui-icon-read"></i>
+                        <em>入馆预约</em>
+                    </a>
+                </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">
                         <i class="layui-icon layui-icon-table"></i>
                         <em>座位信息</em>
                     </a>
                     <dl class="layui-nav-child">
-                        <dd><a href="views/seatinfo"><i class="layui-icon layui-icon-template"></i>修改座位布局</a></dd> <!--可以修改座位状态-->
-                        <dd><a href="views/insertseats"><i class="layui-icon layui-icon-add-circle"></i>座位状态管理</a></dd>
-<!--                        <dd><a href="views/seatview"><i class="layui-icon layui-icon-print"></i>座位预约情况</a></dd>-->
+                        <dd><a href="foreend/qrcode"><i class="layui-icon layui-icon-chart-screen"></i>查看当前选座情况</a></dd>
+                        <dd><a href="foreend/seatInfo"><i class="layui-icon layui-icon-list"></i>查看所有座位信息</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">
-                        <i class="layui-icon layui-icon-friends"></i>
-                        <em>用户信息</em>
+                        <i class="layui-icon layui-icon-component"></i>
+                        <!--图标链接：https://www.layui.com/doc/element/icon.html?tdsourcetag=s_pcqq_aiomsg-->
+                        <em>其他工具</em>
                     </a>
                     <dl class="layui-nav-child">
-                        <dd><a href="views/userCredit"><i class="layui-icon layui-icon-user"></i>用户信用管理</a></dd>
-                        <dd><a href="views/userState"><i class="layui-icon layui-icon-upload-circle"></i>用户状态管理</a></dd>
-                        <dd><a href="views/userRecord"><i class="layui-icon layui-icon-set-sm"></i>用户选座记录</a></dd>
+                        <dd><a href="foreend/searchBook"><i class="layui-icon layui-icon-search"></i>书本查询</a></dd>
+                        <dd><a href="javascript:;"><i class="layui-icon layui-icon-cellphone"></i>电子书阅览</a></dd>
+                        <dd><a href="javascript:;"><i class="layui-icon layui-icon-service"></i>留言反馈</a></dd>
                     </dl>
                 </li>
             </ul>

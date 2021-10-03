@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.librarySystem.Demo.dao.UserDAO">
+<mapper namespace="com.librarySystem.Demo.dao.UserDao">
+    <select id="findByIdentity" resultType="com.librarySystem.Demo.entity.User">
+        select *
+        from userinfo
+        where identity = #{identity}
+          and id = #{account}
+    </select>
 
-<!--	这里是写给测试类的 Mapper-->
-	<resultMap id="getUser"
-		type="com.librarySystem.Demo.entity.testUser">
-		<id column="sno" property="sno" />
-		<result column="sname" property="sname" />
-		<result column="pswd" property="password" />
-		<result column="gender" property="gender" />
-		<result column="campus" property="campus" />
-		<result column="birthday" property="birthday" />
-		<result column="occipyseat" property="occipyseat" />
-		<result column="state" property="state" />
-		<result column="violatetime" property="violatetime"/>
-		<result column="idadress" property="idadress"/>
-	</resultMap>
+    <select id="login" resultType="com.librarySystem.Demo.entity.User">
+        select *
+        from userinfo
+        where identity = #{identity}
+          and id = #{account}
+          and password = #{password}
+    </select>
 
-	<select id="login" resultMap="getUser">
-		select * from t_studentinfo where sno = #{sno} and pswd = #{password}
-	</select>
+    <!--    <insert id="register">-->
+    <!--        insert into t_studentinfo(sno, sname, pswd, campus)-->
+    <!--        values (#{sno}, #{sname}, #{password}, #{campus})-->
+    <!--    </insert>-->
 
-	<insert id="register">
-		insert into t_studentinfo(sno,sname,pswd,campus) values(#{sno},#{sname},#{password},#{campus})
-	</insert>
+    <!--    <select id="getUserbySno" resultMap="getUser">-->
+    <!--        select *-->
+    <!--        from library_seat_selection.t_studentinfo-->
+    <!--        where SNO = #{sno}-->
+    <!--    </select>-->
 
-	<select id="getUserbySno" resultMap="getUser">
-		select * from library_seat_selection.t_studentinfo where SNO = #{sno}
-	</select>
-
-	<select id="getUserbyInfos" resultMap="getUser">
-		select * from library_seat_selection.t_studentinfo where SNO like  #{sno} and PSWD like #{password} and CAMPUS like #{campus}
-
-	</select>
-
+    <!--    <select id="getUserbyInfos" resultMap="getUser">-->
+    <!--        select *-->
+    <!--        from library_seat_selection.t_studentinfo-->
+    <!--        where SNO like #{sno}-->
+    <!--          and PSWD like #{password}-->
+    <!--          and CAMPUS like #{campus}-->
+    <!--    </select>-->
 </mapper>

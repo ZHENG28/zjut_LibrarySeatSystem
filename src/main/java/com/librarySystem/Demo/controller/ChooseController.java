@@ -9,18 +9,18 @@ public class ChooseController
     @GetMapping("/toZHfloor")
     public String ZHfloor()
     {
-        return "views/zhFloorView";
+        return "foreend/seat/zhFloorView";
     }
 
     @GetMapping("/toPFfloor")
     public String PFfloor()
     {
-        return "views/pfFloorView";
+        return "foreend/seat/pfFloorView";
     }
 
     @GetMapping("/toMGSfloor")
     public String MGSfloor()
     {
-        return "views/mgsFloorView";
+        return "foreend/seat/mgsFloorView";
     }
 }

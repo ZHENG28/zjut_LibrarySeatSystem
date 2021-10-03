@@ -3,14 +3,14 @@
 <head>
     <title>首页</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="/home/home.css"/>
-    <script type="text/javascript" src="/main/js/jquery-3.6.0.js"></script>
-    <script src="/home/js/animation.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/index.css"/>
+    <script type="text/javascript" src="/js/jquery-3.6.0.js"></script>
+    <script src="/js/animation.js"></script>
 </head>
 
 <body>
 <header>
-    <ul class="headline_left"><img src="/home/img/logo.png" alt="校徽" class="badge">
+    <ul class="headline_left"><img src="/image/index/logo.png" alt="校徽" class="badge">
         &nbsp;<li class="badge_tile">浙江工业大学图书馆选座系统</li>
     </ul>
     <ul class="headline_right">
@@ -18,19 +18,19 @@
         </li>
         <li><a href="#" class="login_sign">登录</a>
         </li>
-        <li><a href="#">设置</a>
-            <dl>
-                <dd><a href="#">1</a></dd>
-                <dd><a href="#">2</a></dd>
-                <dd><a href="#">3</a></dd>
-            </dl>
+        <li><a href="/adminLogin">进入后台</a>
+            <!--                    <dl>-->
+            <!--                        <dd><a href="#">1</a></dd>-->
+            <!--                        <dd><a href="#">2</a></dd>-->
+            <!--                        <dd><a href="#">3</a></dd>-->
+            <!--                    </dl>-->
         </li>
     </ul>
 </header>
 
 <div class="outer">
     <div class="pct first">
-        <img src="/home/img/1.jpg" alt="1" class="img"/>
+        <img src="/image/index/1.jpg" alt="1" class="img"/>
         <div class="bottom_content">
             <h1 class="title">屏峰图书馆</h1>
             <p>
@@ -40,7 +40,7 @@
     </div>
 
     <div class="pct">
-        <img src="/home/img/2.jpg" alt="2" class="img"/>
+        <img src="/image/index/2.jpg" alt="2" class="img"/>
         <div class="bottom_content">
             <h1 class="title">屏峰图书馆</h1>
             <p>
@@ -50,7 +50,7 @@
     </div>
 
     <div class="pct">
-        <img src="/home/img/3.jpg" alt="3" class="img"/>
+        <img src="/image/index/3.jpg" alt="3" class="img"/>
         <div class="bottom_content">
             <h1 class="title">屏峰图书馆</h1>
             <p>
@@ -60,7 +60,7 @@
     </div>
 
     <div class="pct">
-        <img src="/home/img/4.jpg" alt="4" class="img"/>
+        <img src="/image/index/4.jpg" alt="4" class="img"/>
         <div class="bottom_content">
             <h1 class="title">屏峰图书馆</h1>
             <p>
@@ -70,7 +70,7 @@
     </div>
 
     <div class="pct">
-        <img src="/home/img/5.jpg" alt="5" class="img"/>
+        <img src="/image/index/5.jpg" alt="5" class="img"/>
         <div class="bottom_content">
             <h1 class="title">朝晖图书馆</h1>
             <p>
@@ -80,7 +80,7 @@
     </div>
 
     <div class="pct">
-        <img src="/home/img/6.jpg" alt="6" class="img"/>
+        <img src="/image/index/6.jpg" alt="6" class="img"/>
         <div class="bottom_content">
             <h1 class="title">莫干山图书馆</h1>
             <p>
@@ -110,12 +110,12 @@
         <select class="choice" name="identity" id="identity" required autofocus>
             <option value="" id="choose_all" selected>选择身份</option>
             <option value="1">学生</option>
-            <option value="0">管理员</option>
+            <option value="0">教师</option>
         </select><br>
         <input type="text" name="account" id="account" placeholder="账号" required><br>
         <input type="password" name="password" id="password" placeholder="密码" required><br>
         <!--        记录登录信息尚未实现-->
-        <input type="checkbox" id="check" name="autoLog">下次自动登录<br>
+        <!--        <input type="checkbox" id="check" name="autoLog">下次自动登录<br>-->
         <input type="button" value="登录" class="loginbtn" id="loginBtn" onclick="login()">
         <h3 id="errMsg" style="color: red;text-align: center;font-size: 15px"></h3>
     </form>
@@ -153,7 +153,7 @@
 </footer>
 
 <script>
-
+    // 轮播图
     let pct = document.querySelectorAll(".pct");
     let i = 0;
     //                let autoPlay = true;
@@ -177,7 +177,7 @@
         }
 
         return {start: start, stop: stop};
-    }())
+    }());
     mark.start();
 
     function toRight() {
@@ -202,38 +202,40 @@
         mark.start();
     }
 
+    // 用户登录
     function login() {
         let identity = $("#identity>option:selected").val();
+        let account = $("#account").val();
+        let password = $("#password").val();
+
+        if (identity === '') {
+            $('#errMsg').text("请选择您的身份信息");
+            return;
+        }
+        if (account === '' || password === '') {
+            $('#errMsg').text("请输入您的账号和密码");
+            return;
+        }
+
         $.ajax({
             url: "/user/login",
             type: "POST",
-            data:JSON.stringify(
+            data: JSON.stringify(
                 {
-                    "account": $("#account").val(),
-                    "password": $("#password").val()
+                    // 1-student 0-teacher empty
+                    "identity": identity,
+                    "account": account,
+                    "password": password,
                 }),
             dataType: "json",
             contentType: "application/json;charset=UTF-8",
             success: function (response) {
                 $("#errMsg").empty();
-                if(response.error.trim() == "true"){
-                    $('#errMsg').text("Login Error!");
+                if (response.error) {
+                    $("#errMsg").text(response.errMsg);
+                } else {
+                    window.location.href = "/foreend";
                 }
-                else window.location.href = "/main"
-                // if (response.trim() == "OK") {
-                //     /** 将身份信息共享，不同身份主页面呈现不同
-                //      * 如果是学生，则为当前页面
-                //      * 如果是管理员，则信息显示方面与权限方面有所差别
-                //      */
-                //     if (identity == 1) { // student
-                //         window.location.href = "/Library/main/library.jsp";
-                //     } else if (identity == 0) { // manager
-                //         window.location.href = "/Library/main/library.jsp";
-                //     }
-                // } else {
-                //     $("#errMsg").text(response);
-                //     $("#sno").focus();
-                // }
             }
         })
     }

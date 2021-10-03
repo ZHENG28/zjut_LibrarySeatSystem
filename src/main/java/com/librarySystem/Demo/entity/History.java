@@ -1,15 +1,18 @@
 package com.librarySystem.Demo.entity;
 
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
 public class History
 {
     private int id;
-    private String sno;
-    private int occupyseat;
+    private String userId;
+    private int seatId;
     private Date reservation;
-    private Date reachtime;
-    private Date leavetime;
+    private Date reachTime;
+    private Date leaveTime;
 
     public int getId()
     {
@@ -21,26 +24,6 @@ public class History
         this.id = id;
     }
 
-    public String getSno()
-    {
-        return sno;
-    }
-
-    public void setSno(String sno)
-    {
-        this.sno = sno;
-    }
-
-    public int getOccupyseat()
-    {
-        return occupyseat;
-    }
-
-    public void setOccupyseat(int occupyseat)
-    {
-        this.occupyseat = occupyseat;
-    }
-
     public Date getReservation()
     {
         return reservation;
@@ -49,25 +32,5 @@ public class History
     public void setReservation(Date reservation)
     {
         this.reservation = reservation;
-    }
-
-    public Date getReachtime()
-    {
-        return reachtime;
-    }
-
-    public void setReachtime(Date reachtime)
-    {
-        this.reachtime = reachtime;
-    }
-
-    public Date getLeavetime()
-    {
-        return leavetime;
-    }
-
-    public void setLeavetime(Date leavetime)
-    {
-        this.leavetime = leavetime;
     }
 }

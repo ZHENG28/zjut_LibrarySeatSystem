@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="../assets/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/view.css"/>
+    <script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
+    <title>座位预览</title>
+</head>
+<body class="layui-view-body">
+<div class="layui-content">
+    <div class="layui-row layui-col-space20">
+        <div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
+            <div class="layui-card">
+                <div class="layui-card-body chart-card">
+                    <div class="chart-header">
+                        <div class="metawrap">
+                            <div class="total"><a href="/toZHfloor">朝晖校区</a></div>
+                        </div>
+                    </div>
+                    <div class="chart-footer">
+                        <div class="field" id="zh-map" onclick="toZHfloor()">
+                            <script src="../js/seat/zh/zh.js" type="module"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
+            <div class="layui-card">
+                <div class="layui-card-body chart-card">
+                    <div class="chart-header">
+                        <div class="metawrap">
+                            <div class="total"><a href="/toPFfloor">屏峰校区</a></div>
+                        </div>
+                    </div>
+                    <div class="chart-footer">
+                        <div class="field" id="pf-map" onclick="toPFfloor()">
+                            <script src="../js/seat/pf/pf.js" type="module"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
+        <div class="layui-card">
+            <div class="layui-card-body chart-card">
+                <div class="chart-header">
+                    <div class="metawrap">
+                        <div class="total"><a href="/toMGSfloor">莫干山校区</a></div>
+                    </div>
+                </div>
+                <div class="chart-footer">
+                    <div class="field" id="mgs-map" onclick="toMGSfloor()">
+                        <script src="../js/seat/mgs/mgs.js" type="module"></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="layui-col-xs6 layui-col-md12 layui-inline">
+            <div class="layui-card">
+                <div class="layui-card-body chart-card">
+                    <div class="chart-header">
+                        <div class="metawrap">
+                            <div class="total">选中预览</div>
+                        </div>
+                    </div>
+                    <div class="chart-footer">
+                        <div class="field">
+                            <span id="printview"><h1>选中预览</h1></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/layui.all.js"></script>
+<script>
+    var element = layui.element;
+
+    function toZHfloor() {
+        // return "";
+        $('#printview h1').text('选中朝晖');
+    }
+
+    function toPFfloor() {
+        $('#printview h1').text('选中屏峰');
+    }
+
+    function toMGSfloor() {
+        $('#printview h1').text('选中莫干山');
+    }
+</script>
+</body>
+</html>
