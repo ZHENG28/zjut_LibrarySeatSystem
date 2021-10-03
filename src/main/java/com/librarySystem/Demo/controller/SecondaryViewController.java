@@ -69,4 +69,9 @@ public class SecondaryViewController {
     public String users(){
         return v+"users";
     }
+
+    @GetMapping("/qrcode")
+    public String qrcode(){
+        return v+"qrcode";
+    }
 }

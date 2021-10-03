@@ -2,6 +2,7 @@ package com.librarySystem.Demo.controller;
 
 import com.librarySystem.Demo.entity.testUser;
 import com.librarySystem.Demo.service.UserService;
+import com.librarySystem.Demo.utils.QRCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +33,7 @@ public class UserController {
         if (tu!=null){
             System.out.println(tu.getSname()+"登陆成功");
             request.getSession().setAttribute("user",tu);
+            QRCode.CreateQRCode(tu.getSname());
             log.put("username",tu.getSname());
         }
         else {
