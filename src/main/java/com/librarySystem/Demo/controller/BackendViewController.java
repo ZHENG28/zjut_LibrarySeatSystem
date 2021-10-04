@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BackendViewController
 {
 
-    String v = "backend/";
+    String v = "views/";
 
     @GetMapping("/homePage")
     public String consoleBack()
     {
-        return v + "homePage";
+        return "backend/" + "homePage";
     }
 
     @GetMapping("/form")

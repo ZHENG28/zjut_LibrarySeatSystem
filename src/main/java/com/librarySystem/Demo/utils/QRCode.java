@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 
+import com.librarySystem.Demo.entity.User;
 import org.apache.commons.lang3.StringUtils;
 
 import com.google.zxing.BarcodeFormat;
@@ -43,18 +44,19 @@ public class QRCode {
     public QRCode() {
     }
 
-    public static void CreateQRCode(String content) {
+    public static void CreateQRCode(User user) {
         int width = 400;
         int height = 400;
         String format = "png";// 生成的二维码图片为png类型
 
+        String content ;
         HashMap hints = new HashMap();// 定义二维码内容参数
         hints.put(EncodeHintType.CHARACTER_SET, "utf-8");// 设置字符集编码格式,消除乱码
         hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M); // 设置容错等级，使用M级别
         hints.put(EncodeHintType.MARGIN, 2);// 设置二维码空白区域大小
         hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);// 优化扫描精度，增加解析成功率
 
-        String name = content;
+        String name = user.getName();
         String filepath = "./src/main/resources/static/res/qrcode";
         File file = new File(filepath);
         System.out.println("图片存储路径为:"+file.getAbsolutePath());
@@ -67,7 +69,7 @@ public class QRCode {
         content = "生成时间：\n"+date+"\n用户:"+name;
         try {
             BitMatrix bitMatrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, width, height, hints);
-            Path path = FileSystems.getDefault().getPath(filepath, name + ".png");
+            Path path = FileSystems.getDefault().getPath(filepath, user.getId() + ".png");
             MatrixToImageWriter.writeToPath(bitMatrix, format, path);// 输出图像
         } catch (WriterException e) {
             // TODO Auto-generated catch block

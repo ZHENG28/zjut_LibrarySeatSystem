@@ -23,7 +23,7 @@
                 <a href="javascript:;"><span th:text="${session.admin.getName}">管理员</span></a>
                 <dl class="layui-nav-child">
                     <dd><a href="">帮助中心</a></dd>
-                    <dd><a href="login">退出</a></dd>
+                    <dd><a href="/logout">退出</a></dd>
                 </dl>
             </li>
         </ul>
@@ -38,10 +38,13 @@
             </div>
             <ul id="Nav" class="layui-nav layui-nav-tree">
                 <li class="layui-nav-item">
-                    <a href="/backend/homePage">
+                    <a href="javascript:;">
                         <i class="layui-icon layui-icon-home"></i>
                         <em>主页</em>
                     </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/backend/homePage"><i class="layui-icon layui-icon-console"></i>报表</a></dd>
+                    </dl>
                 </li>
                 <!--座位管理-->
                 <li class="layui-nav-item">
@@ -50,9 +53,9 @@
                         <em>座位信息</em>
                     </a>
                     <dl class="layui-nav-child">
-                        <dd><a href="views/seatinfo"><i class="layui-icon layui-icon-template"></i>修改座位布局</a></dd> <!--可以修改座位状态-->
-                        <dd><a href="views/insertseats"><i class="layui-icon layui-icon-add-circle"></i>座位状态管理</a></dd>
-<!--                        <dd><a href="views/seatview"><i class="layui-icon layui-icon-print"></i>座位预约情况</a></dd>-->
+                        <dd><a href="backend/seatinfo"><i class="layui-icon layui-icon-template"></i>修改座位布局</a></dd> <!--可以修改座位状态-->
+                        <dd><a href="backend/insertseats"><i class="layui-icon layui-icon-add-circle"></i>座位状态管理</a></dd>
+                        <!--                        <dd><a href="views/seatview"><i class="layui-icon layui-icon-print"></i>座位预约情况</a></dd>-->
                     </dl>
                 </li>
                 <li class="layui-nav-item">
@@ -61,9 +64,9 @@
                         <em>用户信息</em>
                     </a>
                     <dl class="layui-nav-child">
-                        <dd><a href="views/userCredit"><i class="layui-icon layui-icon-user"></i>用户信用管理</a></dd>
-                        <dd><a href="views/userState"><i class="layui-icon layui-icon-upload-circle"></i>用户状态管理</a></dd>
-                        <dd><a href="views/userRecord"><i class="layui-icon layui-icon-set-sm"></i>用户选座记录</a></dd>
+                        <dd><a href="backend/userCredit"><i class="layui-icon layui-icon-user"></i>用户信用管理</a></dd>
+                        <dd><a href="backend/userState"><i class="layui-icon layui-icon-upload-circle"></i>用户状态管理</a></dd>
+                        <dd><a href="backend/userRecord"><i class="layui-icon layui-icon-set-sm"></i>用户选座记录</a></dd>
                     </dl>
                 </li>
             </ul>

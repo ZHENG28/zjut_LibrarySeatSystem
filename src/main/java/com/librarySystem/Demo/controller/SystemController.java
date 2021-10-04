@@ -4,6 +4,7 @@ import com.librarySystem.Demo.entity.Admin;
 import com.librarySystem.Demo.entity.User;
 import com.librarySystem.Demo.service.AdminService;
 import com.librarySystem.Demo.service.UserService;
+import com.librarySystem.Demo.utils.QRCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,10 +36,12 @@ public class SystemController
         String identity = info.get("identity");
         String account = info.get("account");
         String password = info.get("password");
-
+        System.out.println(account+"\t"+identity+"\t"+password);
         User user = userService.login(identity, account, password);
         if (user != null) {
             request.getSession().setAttribute("user", user);
+            System.out.println(user.getName()+"成功登录!");
+            QRCode.CreateQRCode(user);
         } else {
             log.put("errMsg", userService.findByIdentity(identity, account) ? "该账号不存在，请重新选择身份" : "账号或密码错误，请重新填写");
             error = true;
