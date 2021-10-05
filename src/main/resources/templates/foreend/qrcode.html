@@ -6,8 +6,10 @@
     <link rel="stylesheet" href="../assets/css/layui.css">
     <link rel="stylesheet" href="../assets/css/view.css"/>
     <script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="../assets/layui.js"></script>
     <title>二维码</title>
 </head>
+<div hidden  th:text="'../res/qrcode/'+${session.user.getId}+'.png'" id="userqr"></div>
 <body class="layui-view-body">
 <div class="layui-content">
     <div class="layui-col-xs6 layui-col-md12 layui-inline">
@@ -26,9 +28,30 @@
             </div>
         </div>
     </div>
+<!--  按钮设计页面 ： https://www.layui.com/doc/element/button.html  -->
+    <button class=" layui-btn-radius layui-btn" id="changeState">切换状态<i class="layui-icon layui-icon-edit"></i></button>
 </div>
 <script src="../assets/layui.all.js"></script>
 <script>
+        // 参考网页: https://www.layui.com/doc/modules/layer.html
+        let content = "<img src="+$('#userqr').text()+"/>";
+        $('#changeState').click(function (){
+        let index = layer.open({
+            skin: 'layui-layer-lan',//皮肤，可选，这里用了内置参数
+            offset: '100px',//相对于内嵌页面
+            title:'扫一扫切换状态',
+            type: 0,//信息框
+            // content: '传入任意的文本或html', //content是可以是 string或者html
+            content:content,
+            closeBtn:2,//两种关闭按钮（1和2）,自己挑选
+            time:8000,//8秒后自动关闭
+            yes: function(index, layero){
+                //按确定后执行的函数，‘yes’属性可删
+                //alert("yes");
+                layer.close(index); //如果设定了yes回调，需进行手工关闭
+            }
+        });
+        })
 </script>
 </body>
 </html>
