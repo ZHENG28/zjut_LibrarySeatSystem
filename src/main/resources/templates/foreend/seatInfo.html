@@ -49,7 +49,7 @@
                             </div>
                         </div>
                     </div>
-                    <table id="seatList" lay-filter="test"></table>
+                    <table id="seatList" lay-filter="seat"></table>
                 </div>
             </div>
         </div>
@@ -58,7 +58,7 @@
 <script src="../assets/layui.js"></script>
 <script src="../js/jquery-3.6.0.js"></script>
 <script type="text/html" id="btn">
-    <button class="layui-btn layui-btn-blue layui-btn-sm">预约</button>
+    <button class="layui-btn layui-btn-blue layui-btn-sm" lay-event="order">预约</button>
 </script>
 <script th:inline="none">
     $(function (){
@@ -84,14 +84,14 @@
             table.render({
                 elem: '#seatList'
                 , cols: [[//标题栏
-                    {field: 'seatId', title: '编号', width: 150, hide: true, toolbar: true}
+                    {field: 'seatId', title: '编号', width: 150, hide: true}
                     , {field: 'campus', title: '校区', width: 150, sort: true}
                     , {field: 'floor', title: '楼层', width: 120, sort: true}
                     , {field: 'deskno', title: '桌号', width: 100, sort: true}
                     , {field: 'deskType', title: '桌子类型', width: 120, sort: true}
                     , {field: 'occupyNum', title: '已选人数', width: 120, sort: true}
-                    , {field: 'right', align: 'center', title: '操作',width:80,toolbar: '#btn'}
-                    // , {toolbar: '#btn', width: 150, fixed: 'right', align: 'center'}
+                    , {field: 'btn', align: 'center', title: '操作',width:80,toolbar: '#btn'}
+                    // , {fixed: 'right', width:150, align:'center', toolbar: '#btn'}
                 ]]
                 , data: response
                 , skin: 'line' //表格风格
@@ -104,30 +104,37 @@
     }));
 
     console.log()
-    // table.on('toolbar(btn)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
-    //
-    //     var data = obj.data; //获得当前行数据
-    //     var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
-    //     var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
-    //
-    //     console.log(data);
-    //     console.log(layEvent);
-    //     console.log(tr);
-    //
-    //     // 首列隐藏掉，然后这边获取到用户要预约的这一行的seatId，然后传到后台去预约（/seat/reserve）
-    //     // 返回true或false，预约成功失败均弹窗提示
-    // });
-        console.log(table.on('row(test)', function(obj){
-            console.log(obj.tr) //得到当前行元素对象
-            console.log(obj.data) //得到当前行数据
-            //obj.del(); //删除当前行
-            //obj.update(fields) //修改当前行数据
-        }))
+    table.on('tool(seat)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
 
-//触发行双击事件
-        table.on('rowDouble(test)', function(obj){
-            //obj 同上
-        });
+        var data = obj.data; //获得当前行数据
+        var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+        var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+
+        if(layEvent === 'order'){ //查看
+            //do somehing
+
+            console.log(data.seatId)
+            $.ajax({
+                url: '/seat/reserve',
+                type: 'post',
+                data:data.seatId
+                ,
+                contentType: "application/json;charset=UTF-8",
+                success:function (msg){
+                    alert(msg.toString())
+                },
+                error:function (){
+                    console.log("error!")
+                }
+            })
+        }
+        // console.log(data);
+        // console.log(layEvent);
+        // console.log(tr);
+
+        // 首列隐藏掉，然后这边获取到用户要预约的这一行的seatId，然后传到后台去预约（/seat/reserve）
+        // 返回true或false，预约成功失败均弹窗提示
+    });
     })
 </script>
 </body>
