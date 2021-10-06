@@ -24,19 +24,18 @@
                     <div class="layui-font-20">
                         <p>
                             您当前的座位：<span id="seatId" th:text="${seatInfo}"></span>
+                            <button class="layui-btn-radius layui-btn" id="signin">签到<i class="layui-icon layui-icon-ok-circle"></i></button>
+                            <button class="layui-btn-radius layui-btn layui-btn-danger" id="signout">签退<i class="layui-icon layui-icon-close-fill"></i></button>
+
                         </p>
-                        <p>
+                        <p style="margin: 5px">
                             您当前的状态：<span id="state" th:text="${state}"></span>
+                            <button class="layui-btn-radius layui-btn layui-btn-warm" id="stop">暂离座位<i class="layui-icon layui-icon-close-fill"></i></button>
                         </p>
-                        <p>
+                        <p style="margin: 5px">
                             您当前的违规次数：<span id="violate" th:text="${violate}"></span>
                         </p>
                     </div>
-                    <button class="layui-btn-radius layui-btn" id="signin">签到<i
-                            class="layui-icon layui-icon-ok-circle"></i>
-                    </button>
-                    <button class="layui-btn-radius layui-btn layui-btn-danger" id="signout">签退<i class="layui-icon layui-icon-close-fill"></i></button>
-                    <button class="layui-btn-radius layui-btn layui-btn-warm" id="stop">暂离座位<i class="layui-icon layui-icon-close-fill"></i></button>
                     <!--                    <div class="field">-->
                     <!--                        <img th:src="'../res/qrcode/'+${session.user.getId}+'.png'" id="idcard"/>-->
                     <!--                    </div>-->
