@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="chart-footer">
-                    <div>
+                    <div class="layui-font-20">
                         <p>
                             您当前的座位：<span id="seatId" th:text="${seatInfo}"></span>
                         </p>
@@ -35,8 +35,8 @@
                     <button class="layui-btn-radius layui-btn" id="signin">签到<i
                             class="layui-icon layui-icon-ok-circle"></i>
                     </button>
-                    <button class="layui-btn-radius layui-btn-danger" id="signout">签退<i class="layui-icon layui-icon-close-fill"></i></button>
-                    <button class="layui-btn-radius layui-btn-warm" id="stop">暂离座位<i class="layui-icon layui-icon-close-fill"></i></button>
+                    <button class="layui-btn-radius layui-btn layui-btn-danger" id="signout">签退<i class="layui-icon layui-icon-close-fill"></i></button>
+                    <button class="layui-btn-radius layui-btn layui-btn-warm" id="stop">暂离座位<i class="layui-icon layui-icon-close-fill"></i></button>
                     <!--                    <div class="field">-->
                     <!--                        <img th:src="'../res/qrcode/'+${session.user.getId}+'.png'" id="idcard"/>-->
                     <!--                    </div>-->
@@ -66,6 +66,7 @@
     function qrcode() {
         let index = layer.open({
             skin: 'layui-layer-lan',//皮肤，可选，这里用了内置参数
+            area:'450px',
             offset: '100px',//相对于内嵌页面
             title: '扫一扫切换状态',
             type: 0,//信息框
