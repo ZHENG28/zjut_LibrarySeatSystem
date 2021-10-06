@@ -3,7 +3,8 @@ package com.librarySystem.Demo.entity;
 import lombok.Data;
 
 @Data
-public class Seat {
+public class Seat
+{
 
     private int seatId;
     private String campus;
@@ -88,7 +89,6 @@ public class Seat {
 
     public String getDeskInfo()
     {
-        String campus = "ZH".equals(this.campus) ? "朝晖" : ("PF".equals(this.campus) ? "屏峰" : "莫干山");
-        return campus + "-" + this.floor + "楼-" + this.deskno + "号桌";
+        return this.campus + "-" + this.floor + "楼-" + this.deskno + "号桌";
     }
 }

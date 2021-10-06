@@ -9,4 +9,8 @@ import java.util.List;
 public interface SeatDao
 {
     List<Seat> getSeatInfo();
+
+    Seat getSeatById(Integer seatId);
+
+    int changeNum(Integer seatId);
 }

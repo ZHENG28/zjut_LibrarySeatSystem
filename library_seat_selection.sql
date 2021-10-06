@@ -105,18 +105,19 @@ INSERT INTO `seatinfo` VALUES (10, '朝晖', 1, 10, 4, 2);
 -- ----------------------------
 DROP TABLE IF EXISTS `userinfo`;
 CREATE TABLE `userinfo`  (
-  `id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '学号/工号',
-  `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '姓名',
-  `password` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '密码',
-  `identity` int NOT NULL COMMENT '身份，0-老师/1-学生',
-  `gender` int NULL DEFAULT NULL COMMENT '性别，0-男/1-女',
-  `campus` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '校区',
-  `seatid` int NULL DEFAULT NULL COMMENT '占座桌号，未占座为null',
-  `state` int NOT NULL DEFAULT 0 COMMENT '当前状态，0-未占座/1-已选座/2-暂离',
-  `violate` int NOT NULL DEFAULT 0 COMMENT '违规记录次数',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `userinfo_foreignkey_seatid`(`seatid`) USING BTREE,
-  CONSTRAINT `userinfo_foreignkey_seatid` FOREIGN KEY (`seatid`) REFERENCES `seatinfo` (`seatid`) ON DELETE RESTRICT ON UPDATE RESTRICT
+     `id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '学号/工号',
+     `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '姓名',
+     `password` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '密码',
+     `identity` int NOT NULL COMMENT '身份，0-老师/1-学生',
+     `gender` int NULL DEFAULT NULL COMMENT '性别，0-男/1-女',
+     `campus` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '校区',
+     `seatid` int NULL DEFAULT NULL COMMENT '占座桌号，未占座为null',
+     `reservetime` datetime NULL DEFAULT NULL COMMENT '预约时间',
+     `state` int NOT NULL DEFAULT 0 COMMENT '当前状态，0-未占座/1-已选座/2-暂离',
+     `violate` int NOT NULL DEFAULT 0 COMMENT '违规记录次数',
+     PRIMARY KEY (`id`) USING BTREE,
+     INDEX `userinfo_foreignkey_seatid`(`seatid`) USING BTREE,
+     CONSTRAINT `userinfo_foreignkey_seatid` FOREIGN KEY (`seatid`) REFERENCES `seatinfo` (`seatid`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------

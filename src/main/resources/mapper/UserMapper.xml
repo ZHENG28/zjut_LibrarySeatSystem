@@ -16,6 +16,13 @@
           and password = #{password}
     </select>
 
+    <update id="reserve">
+        update userinfo
+        set seatid=#{seatId},
+            reservetime=#{time}
+        where id = ${userId}
+    </update>
+
     <!--    <insert id="register">-->
     <!--        insert into t_studentinfo(sno, sname, pswd, campus)-->
     <!--        values (#{sno}, #{sname}, #{password}, #{campus})-->

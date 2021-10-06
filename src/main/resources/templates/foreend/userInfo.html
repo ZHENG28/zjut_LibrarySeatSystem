@@ -27,25 +27,25 @@
                 <div class="form-box">
                     <div class="layui-form layui-form-item">
                         <div class="layui-input-block">
-                            <div class="layui-form-mid">姓名：</div>
-                            <div class="layui-input-block" >
-                                <p class="layui-elem-quote" th:text="${session.user.getName}"></p>
-                            </div>
                             <div class="layui-form-mid">学号/工号：</div>
-                            <div class="layui-input-block" >
+                            <div class="layui-input-block">
                                 <p class="layui-elem-quote" th:text="${session.user.getId}"></p>
                             </div>
+                            <div class="layui-form-mid">姓名：</div>
+                            <div class="layui-input-block">
+                                <p class="layui-elem-quote" th:text="${session.user.getName}"></p>
+                            </div>
+                            <div class="layui-form-mid">性别：</div>
+                            <div class="layui-input-block">
+                                <p class="layui-elem-quote" th:text="${session.user.getGender==1?'女':'男'}"></p>
+                            </div>
+                            <div class="layui-form-mid">身份：</div>
+                            <div class="layui-input-block">
+                                <p class="layui-elem-quote" th:text="${session.user.getIdentity==1?'学生':'老师'}"></p>
+                            </div>
                             <div class="layui-form-mid">校区：</div>
-                            <div class="layui-input-block" >
-                                <p class="layui-elem-quote" th:text="${session.user.getCampus}"></p>
-                            </div>
-                            <div class="layui-form-mid">状态</div>
-                            <div class="layui-input-block" >
-                                <p class="layui-elem-quote" th:text="${session.user.getState}"></p>
-                            </div>
-                            <div class="layui-form-mid">信誉</div>
-                            <div class="layui-input-block" >
-                                <p class="layui-elem-quote" th:text="${session.user.getViolate}"></p>
+                            <div class="layui-input-block">
+                                <p class="layui-elem-quote" th:text="${session.user.getCampus}+校区"></p>
                             </div>
                             <div class="layui-form-item layui-form-text">
                                 <label class="layui-form-mid">签名</label>

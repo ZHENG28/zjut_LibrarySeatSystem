@@ -7,4 +7,15 @@
         select *
         from seatinfo
     </select>
+    <select id="getSeatById" resultType="com.librarySystem.Demo.entity.Seat">
+        select *
+        from seatinfo
+        where seatid = #{seatId}
+    </select>
+
+    <update id="changeNum">
+        update seatinfo
+        set occupynum = occupynum + 1
+        where seatid = #{seatId}
+    </update>
 </mapper>

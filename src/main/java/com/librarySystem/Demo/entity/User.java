@@ -2,6 +2,8 @@ package com.librarySystem.Demo.entity;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class User
 {
@@ -12,6 +14,7 @@ public class User
     private int gender;
     private String campus;
     private int seatId;
+    private Date reserveTime;
     private int state;
     private int violate;
 
