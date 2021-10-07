@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../assets/css/layui.css">
+    <link rel="stylesheet" href="../assets/css/view.css"/>
+    <link rel="icon" href="/static/favicon.ico">
+    <title>History Record</title>
+</head>
+<body class="layui-view-body">
+<div id="userid" hidden th:text="${session.user.getId()}"></div>
+<div class="layui-content">
+    <div class="layui-row">
+        <div class="layui-card">
+            <div class="layui-card-body">
+                <div class="form-box">
+                    <table id="historyRecord" lay-filter="history"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/layui.js"></script>
+<script src="../js/jquery-3.6.0.js"></script>
+<script type="text/html" id="btn">
+    <button class="layui-btn layui-btn-blue layui-btn-sm" lay-event="export">导出历史记录</button>
+</script>
+<script th:inline="none">
+    $(function () {
+        let element = layui.element;
+        let table = layui.table;
+        let form = layui.form;
+
+        let userid= $('#userid').text();
+        ($.ajax({
+            url: "/user/getHistory",
+            type: "POST",
+            dataType: "json",
+            data:JSON.stringify({
+                "userid":userid
+            }),
+            contentType: "application/json;charset=UTF-8",
+            success: function (response) {
+                // for (let i = 0; i < response.length; i++) {
+                //     response[i].userid = "校区";
+                //     response[i].seatid = "楼";
+                //     response[i].reservation = "号桌";
+                //     response[i].reachtime = "人座";
+                //     response[i].leavetime = response[i].leavetime + " 人";
+                // }
+
+                //展示已知数据
+                table.render({
+                    elem: '#historyRecord'
+                    , cols: [[//标题栏
+                        {field: 'id', title: '编号', width: 150, hide: true}
+                        , {field: 'userId', title: '用户id', width: 100, sort: true}
+                        , {field: 'seatId', title: '座位id', width: 100, sort: true}
+                        , {field: 'reservation', title: '预约时间', minWidth: 230, sort: true}
+                        , {field: 'reachTime', title: '到达时间', minWidth: 230, sort: true}
+                        , {field: 'leaveTime', title: '离开时间', minWidth: 230, sort: true}
+                    ]]
+                    , toolbar: '#btn'
+                    , data: response
+                    , skin: 'line' //表格风格
+                    , even: true
+                    , page: true //是否显示分页
+                    , limits: [5, 10, 20, 50, 100]
+                    , limit: 10 //每页默认显示的数量
+                });
+            }
+        }));
+
+        table.on('toolbar(history)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data; //获得当前行数据
+            var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+            var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+
+            if (layEvent === 'export') { //查看
+                table.exportFile(tab.config.id, tab.config.data);
+            }
+        });
+    })
+</script>
+</body>
+</html>

@@ -6,12 +6,14 @@ import com.librarySystem.Demo.entity.User;
 import com.librarySystem.Demo.service.HistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -62,5 +64,11 @@ public class UserController
         }
 
         return info;
+    }
+
+    @RequestMapping("/getHistory")
+    @ResponseBody
+    public List<History> getHistory(@RequestBody Map<String,String> userid){
+        return historyService.getAllUserHistory(userid.get("userid"));
     }
 }

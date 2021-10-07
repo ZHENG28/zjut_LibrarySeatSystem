@@ -97,4 +97,9 @@ public class ForeendViewController
     {
         return v + "operaterule";
     }
+
+    @GetMapping("/history")
+    public String history(){
+        return v+"history";
+    }
 }

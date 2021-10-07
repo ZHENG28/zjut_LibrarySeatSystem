@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class HistoryService
@@ -18,5 +19,9 @@ public class HistoryService
     public History getHistoryByUser(User user)
     {
         return historyDao.getHistoryByUser(user.getId(), user.getSeatId(), user.getReserveTime());
+    }
+
+    public List<History> getAllUserHistory(String userid){
+        return historyDao.getAllUserHistory(userid);
     }
 }
