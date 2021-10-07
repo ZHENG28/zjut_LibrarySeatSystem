@@ -15,31 +15,31 @@
         <div class="layui-card">
             <div class="layui-card-body">
                 <div class="form-box">
-<!--                    <div class="layui-form layui-form-item">-->
-<!--                        <div class="layui-inline">-->
-<!--                            <div class="layui-form-mid">院区:</div>-->
-<!--                            <div class="layui-input-inline" style="width: 100px;">-->
-<!--                                <input type="text" autocomplete="off" class="layui-input">-->
-<!--                            </div>-->
-<!--                            <div class="layui-form-mid">楼层:</div>-->
-<!--                            <div class="layui-input-inline" style="width: 100px;">-->
-<!--                                <input type="text" autocomplete="off" class="layui-input">-->
-<!--                            </div>-->
-<!--                            <div class="layui-form-mid">桌号:</div>-->
-<!--                            <div class="layui-input-inline" style="width: 100px;">-->
-<!--                                <input type="text" autocomplete="off" class="layui-input">-->
-<!--                            </div>-->
-<!--                            <div class="layui-form-mid">状态:</div>-->
-<!--                            <div class="layui-input-inline" style="width: 100px;">-->
-<!--                                <input type="text" autocomplete="off" class="layui-input">-->
-<!--                            </div>-->
-<!--                            <div class="layui-btn-group">-->
-<!--                                <button class="layui-btn layui-btn-blue">查询</button>-->
-<!--                                <button class="layui-btn layui-btn-primary">重置</button>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-                    <table id="seatList" lay-filter="seat"></table>
+                    <!--                    <div class="layui-form layui-form-item">-->
+                    <!--                        <div class="layui-inline">-->
+                    <!--                            <div class="layui-form-mid">院区:</div>-->
+                    <!--                            <div class="layui-input-inline" style="width: 100px;">-->
+                    <!--                                <input type="text" autocomplete="off" class="layui-input">-->
+                    <!--                            </div>-->
+                    <!--                            <div class="layui-form-mid">楼层:</div>-->
+                    <!--                            <div class="layui-input-inline" style="width: 100px;">-->
+                    <!--                                <input type="text" autocomplete="off" class="layui-input">-->
+                    <!--                            </div>-->
+                    <!--                            <div class="layui-form-mid">桌号:</div>-->
+                    <!--                            <div class="layui-input-inline" style="width: 100px;">-->
+                    <!--                                <input type="text" autocomplete="off" class="layui-input">-->
+                    <!--                            </div>-->
+                    <!--                            <div class="layui-form-mid">状态:</div>-->
+                    <!--                            <div class="layui-input-inline" style="width: 100px;">-->
+                    <!--                                <input type="text" autocomplete="off" class="layui-input">-->
+                    <!--                            </div>-->
+                    <!--                            <div class="layui-btn-group">-->
+                    <!--                                <button class="layui-btn layui-btn-blue">查询</button>-->
+                    <!--                                <button class="layui-btn layui-btn-primary">重置</button>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <table id="userList" lay-filter="seat"></table>
                 </div>
             </div>
         </div>
@@ -57,31 +57,30 @@
         let form = layui.form;
 
         ($.ajax({
-            url: "/seat/getInfo",
+            url: "/user/getAllUser",
             type: "GET",
             dataType: "json",
             contentType: "application/json;charset=UTF-8",
             success: function (response) {
-                for (let i = 0; i < response.length; i++) {
-                    response[i].campus += "校区";
-                    response[i].floor += "楼";
-                    response[i].deskno += "号桌";
-                    response[i].desktype += "人座";
-                    response[i].occupynum = "已有 " + response[i].occupynum + " 人";
-                }
+                // for (let i = 0; i < response.length; i++) {
+                //     response[i].campus += "校区";
+                //     response[i].floor += "楼";
+                //     response[i].deskno += "号桌";
+                //     response[i].desktype += "人座";
+                //     response[i].occupynum = "已有 " + response[i].occupynum + " 人";
+                // }
 
                 //展示已知数据
                 table.render({
-                    elem: '#seatList'
+                    elem: '#userList'
                     , cols: [[//标题栏
-                        {field: 'seatId', title: '编号', width: 150, hide: true}
-                        , {field: 'campus', title: '校区', width: 150, sort: true}
-                        , {field: 'floor', title: '楼层', width: 120, sort: true}
-                        , {field: 'deskno', title: '桌号', width: 100, sort: true}
-                        , {field: 'desktype', title: '桌子类型', width: 120, sort: true}
-                        , {field: 'occupynum', title: '已选人数', width: 120, sort: true}
-                        , {field: 'btn', align: 'center', title: '操作', width: 80, toolbar: '#btn'}
-                        // , {fixed: 'right', width:150, align:'center', toolbar: '#btn'}
+                        {field: 'id', title: '学号/工号', width: 150, hide: true}
+                        , {field: 'name', title: '姓名', width: 150, sort: true}
+                        , {field: 'identity', title: '身份', width: 120, sort: true}
+                        , {field: 'seatinfo', title: '座位', width: 100, sort: true}
+                        , {field: 'state', title: '状态', width: 120, sort: true}
+                        , {field: 'violate', title: '违规次数', width: 120, sort: true}
+                        // , {field: '', align: 'center', title: '操作', width: 80, toolbar: '#btn'}
                     ]]
                     , data: response
                     , skin: 'line' //表格风格

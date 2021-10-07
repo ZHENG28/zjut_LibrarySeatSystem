@@ -14,7 +14,9 @@ public interface SeatDao
 
     Seat getSeatById(Integer seatId);
 
-    int changeNum(Integer seatId);
+    int upNum(Integer seatId);
+
+    int downNum(Integer seatId);
 
     List<Seat> getSeatByCampus(String campus);
 

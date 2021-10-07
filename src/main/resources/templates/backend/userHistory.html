@@ -10,7 +10,6 @@
     <title>History Record</title>
 </head>
 <body class="layui-view-body">
-<div id="userid" hidden th:text="${session.user.getId()}"></div>
 <div class="layui-content">
     <div class="layui-row">
         <div class="layui-card">
@@ -35,19 +34,16 @@
 
         let userid = $('#userid').text();
         ($.ajax({
-            url: "/history/getAllByUserId",
-            type: "POST",
+            url: "/history/getAll",
+            type: "GET",
             dataType: "json",
-            data: JSON.stringify({
-                "userid": userid
-            }),
-            contentType: "application/json;charset=UTF-8",
             success: function (response) {
                 //展示已知数据
                 table.render({
                     elem: '#historyRecord'
                     , cols: [[//标题栏
                         {field: 'id', title: '编号', width: 100, sort: true}
+                        , {field: 'username', title: '用户', width: 150, sort: true}
                         , {field: 'seatinfo', title: '座位', width: 200, sort: true}
                         , {field: 'reservation', title: '预约时间', minWidth: 230, sort: true}
                         , {field: 'reachtime', title: '到达时间', minWidth: 230, sort: true}
@@ -64,15 +60,15 @@
             }
         }));
 
-        table.on('toolbar(history)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
-            var data = obj.data; //获得当前行数据
-            var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
-            var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
-
-            if (layEvent === 'export') { //查看
-                table.exportFile(tab.config.id, tab.config.data);
-            }
-        });
+        // table.on('toolbar(history)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+        //     var data = obj.data; //获得当前行数据
+        //     var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+        //     var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+        //
+        //     if (layEvent === 'export') { //查看
+        //         table.exportFile(tab.config.id, tab.config.data);
+        //     }
+        // });
     });
 </script>
 </body>

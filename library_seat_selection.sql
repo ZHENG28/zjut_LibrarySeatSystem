@@ -38,7 +38,7 @@ INSERT INTO `admin` VALUES ('1010', '赵六', '123');
 -- ----------------------------
 DROP TABLE IF EXISTS `historyrecord`;
 CREATE TABLE `historyrecord`  (
-  `id` int NOT NULL COMMENT '记录条数',
+  `id` int NOT NULL AUTO_INCREMENT COMMENT '记录条数',
   `userid` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '学号/工号',
   `seatid` int NOT NULL COMMENT '座位号',
   `reservation` datetime NOT NULL COMMENT '预约时间',

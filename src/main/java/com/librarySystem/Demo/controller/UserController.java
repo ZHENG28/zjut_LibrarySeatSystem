@@ -1,9 +1,9 @@
 package com.librarySystem.Demo.controller;
 
-import com.librarySystem.Demo.dao.HistoryDao;
 import com.librarySystem.Demo.entity.History;
 import com.librarySystem.Demo.entity.User;
 import com.librarySystem.Demo.service.HistoryService;
+import com.librarySystem.Demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -23,6 +21,9 @@ public class UserController
     @Autowired
     HistoryService historyService;
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping("/getBtnState")
     @ResponseBody
     public Object getBtnState(HttpServletRequest request)
@@ -31,6 +32,7 @@ public class UserController
         User user = (User) request.getSession().getAttribute("user");
         int seatId = user.getSeatId();
         int state = user.getState();
+        System.out.println(user);
         History history = historyService.getHistoryByUser(user);
         if (seatId == 0 && state == 0) { // 未选座
             info.put("signin", false);
@@ -40,10 +42,10 @@ public class UserController
         } else if (seatId != 0 && state != 0) { // 已选座
             switch (state) {
                 case 1: // 已选座
-                    if (history.getReachTime() != null) { // 已签到
-                        info.put("signin", true);
-                        info.put("signout", false);
-                        info.put("stop", false);
+                    if (history.getReachtime() != null) { // 已签到
+                        info.put("signin", false);
+                        info.put("signout", true);
+                        info.put("stop", true);
                         info.put("back", false);
                     } else { // 未签到
                         info.put("signin", true);
@@ -66,9 +68,10 @@ public class UserController
         return info;
     }
 
-    @RequestMapping("/getHistory")
+    @RequestMapping("/getAllUser")
     @ResponseBody
-    public List<History> getHistory(@RequestBody Map<String,String> userid){
-        return historyService.getAllUserHistory(userid.get("userid"));
+    public Object getAllUser()
+    {
+        return userService.getAllUser();
     }
 }

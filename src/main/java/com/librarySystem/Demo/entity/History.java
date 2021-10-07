@@ -8,11 +8,13 @@ import java.util.Date;
 public class History
 {
     private int id;
-    private String userId;
-    private int seatId;
+    private String userid;
+    private int seatid;
     private Date reservation;
-    private Date reachTime;
-    private Date leaveTime;
+    private Date reachtime;
+    private Date leavetime;
+
+    private Seat seat;
 
     public int getId()
     {

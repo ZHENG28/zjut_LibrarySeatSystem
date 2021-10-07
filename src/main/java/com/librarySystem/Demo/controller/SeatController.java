@@ -28,6 +28,13 @@ public class SeatController
         return seatService.getSeatInfo();
     }
 
+    @RequestMapping("/getSeatById")
+    @ResponseBody
+    public Seat getSeatById(Integer seatid)
+    {
+        return seatService.getSeatById(seatid);
+    }
+
     @RequestMapping("/toFloor")
     public ModelAndView toFloor(String campus)
     {

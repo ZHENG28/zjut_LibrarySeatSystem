@@ -32,9 +32,10 @@
                         </p>
                         <p style="margin: 5px">
                             您当前的状态：<span id="state" th:text="${state}"></span>
-                            <button class="layui-btn-radius layui-btn layui-btn-warm" id="stop">暂离座位<i class="layui-icon layui-icon-close-fill"></i>
+                            <button class="layui-btn-radius layui-btn layui-btn-warm" id="stop" onclick="stopSeat()">暂离座位<i
+                                    class="layui-icon layui-icon-close-fill"></i>
                             </button>
-                            <button class="layui-btn-radius layui-btn layui-btn-warm" id="back">返回座位
+                            <button class="layui-btn-radius layui-btn layui-btn-warm" id="back" onclick="backSeat()">返回座位
                                 <i class="layui-icon layui-icon-close-fill"></i></button>
                         </p>
                         <p style="margin: 5px">
@@ -52,18 +53,26 @@
 <script src="../assets/layui.js"></script>
 <script>
     // 获取各个按钮的状态
-    ($.ajax({
-        url: "/user/getBtnState",
-        type: "GET",
-        dataType: "json",
-        contentType: "application/json;charset=UTF-8",
-        success: function (response) {
-            $("#signin").addClass(response.signin ? "" : "layui-btn-disabled");
-            $("#signout").addClass(response.signout ? "" : "layui-btn-disabled");
-            $("#stop").addClass(response.stop ? "" : "layui-btn-disabled");
-            $("#back").addClass(response.back ? "" : "layui-btn-disabled");
-        }
-    }));
+    (getBtnState());
+
+    function getBtnState() {
+        $.ajax({
+            url: "/user/getBtnState",
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json;charset=UTF-8",
+            success: function (response) {
+                $("#signin").addClass(response.signin ? "" : "layui-btn-disabled");
+                $("#signout").addClass(response.signout ? "" : "layui-btn-disabled");
+                $("#signin").removeAttr(response.signin ? "" : "onclick");
+                $("#signout").removeAttr(response.signout ? "" : "onclick");
+                $("#stop").addClass(response.stop ? "" : "layui-btn-disabled");
+                $("#back").addClass(response.back ? "" : "layui-btn-disabled");
+                $("#stop").removeAttr(response.stop ? "" : "onclick");
+                $("#back").removeAttr(response.back ? "" : "onclick");
+            }
+        });
+    }
 
     // 参考网页: https://www.layui.com/doc/modules/layer.html
     let content = "<img src=" + $('#userqr').text() + "/>";
@@ -74,17 +83,34 @@
             area: '450px',
             offset: '100px',//相对于内嵌页面
             title: '扫一扫' + str,
-            type: 0,//信息框
+            type: 0, //信息框
             // content: '传入任意的文本或html', //content是可以是 string或者html
             content: content,
             closeBtn: 2,//两种关闭按钮（1和2）,自己挑选
-            time: 8000,//8秒后自动关闭
+            // time: 8000,//8秒后自动关闭
             yes: function (index, layero) {
                 //按确定后执行的函数，‘yes’属性可删
-                //alert("yes");
-                layer.close(index); //如果设定了yes回调，需进行手工关闭
+                $.ajax({
+                    url: "/history/" + (str === "签到" ? "signIn" : "signOut"),
+                    type: "GET",
+                    dataType: "json",
+                    success: function (response) {
+                        if (response) {
+                            getBtnState();
+                        }
+                        layer.close(index); //如果设定了yes回调，需进行手工关闭
+                    }
+                });
             }
         });
+    }
+
+    function stopSeat() {
+
+    }
+
+    function backSeat() {
+
     }
 </script>
 </body>

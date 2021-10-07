@@ -24,9 +24,14 @@
           and floor = #{floor}
     </select>
 
-    <update id="changeNum">
+    <update id="upNum">
         update seatinfo
         set occupynum = occupynum + 1
+        where seatid = #{seatId}
+    </update>
+    <update id="downNum">
+        update seatinfo
+        set occupynum = occupynum - 1
         where seatid = #{seatId}
     </update>
 </mapper>

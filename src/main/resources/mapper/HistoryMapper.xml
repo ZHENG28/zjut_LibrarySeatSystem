@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.librarySystem.Demo.dao.HistoryDao">
-    <resultMap id="histories" type="com.librarySystem.Demo.entity.History">
-        <id property="id" column="id"></id>
-        <result property="userId" column="userid"></result>
-        <result property="seatId" column="seatid"></result>
-        <result property="reservation" column="reservation"/>
-        <result property="reachTime" column="reachtime"/>
-        <result property="leaveTime" column="leavetime"/>
-    </resultMap>
     <insert id="insert">
         insert into historyrecord(userid, seatid, reservation)
         values (#{userId}, #{seatId}, #{time})
@@ -20,7 +12,28 @@
           and seatid = #{seatId}
           and reservation = #{reserveTime}
     </select>
-    <select id="getAllUserHistory" resultMap="histories">
-        select * from historyrecord where userid = #{userId}
+    <select id="getAllUserHistory" resultType="com.librarySystem.Demo.entity.History">
+        select *
+        from historyrecord
+        where userid = #{userId}
     </select>
+    <select id="getAll" resultType="com.librarySystem.Demo.entity.History">
+        select *
+        from historyrecord
+    </select>
+
+    <update id="updateSignin">
+        update historyrecord
+        set reachtime=#{date}
+        where userid = #{id}
+          and seatid = #{seatId}
+          and reservation = #{reservetime}
+    </update>
+    <update id="updateSignout">
+        update historyrecord
+        set leavetime=#{date}
+        where userid = #{id}
+          and seatid = #{seatId}
+          and reservation = #{reservetime}
+    </update>
 </mapper>

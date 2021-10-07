@@ -6,35 +6,15 @@ import lombok.Data;
 public class Seat
 {
 
-    private int seatId;
+    private int seatid;
     private String campus;
     private int floor;
     private int deskno;
-    private int deskType;
-    private int occupyNum;
+    private int desktype;
+    private int occupynum;
 
     public Seat()
     {
-    }
-
-    public Seat(int seatId, String campus, int floor, int deskno, int deskType, int occupyNum)
-    {
-        this.seatId = seatId;
-        this.campus = campus;
-        this.floor = floor;
-        this.deskno = deskno;
-        this.deskType = deskType;
-        this.occupyNum = occupyNum;
-    }
-
-    public int getSeatId()
-    {
-        return seatId;
-    }
-
-    public void setSeatId(int seatId)
-    {
-        this.seatId = seatId;
     }
 
     public String getCampus()
@@ -65,26 +45,6 @@ public class Seat
     public void setDeskno(int deskno)
     {
         this.deskno = deskno;
-    }
-
-    public int getDeskType()
-    {
-        return deskType;
-    }
-
-    public void setDeskType(int deskType)
-    {
-        this.deskType = deskType;
-    }
-
-    public int getOccupyNum()
-    {
-        return occupyNum;
-    }
-
-    public void setOccupyNum(int occupyNum)
-    {
-        this.occupyNum = occupyNum;
     }
 
     public String getDeskInfo()

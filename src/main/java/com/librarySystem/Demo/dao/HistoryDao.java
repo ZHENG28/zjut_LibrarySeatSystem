@@ -15,4 +15,10 @@ public interface HistoryDao
     History getHistoryByUser(@Param("userId") String id, @Param("seatId") int seatId, @Param("reserveTime") Date reserveTime);
 
     List<History> getAllUserHistory(@Param("userId") String id);
+
+    int updateSignin(@Param("id") String id, @Param("seatId") int seatId, @Param("reservetime") Date reservetime, @Param("date") Date date);
+
+    int updateSignout(@Param("id") String id, @Param("seatId") int seatId, @Param("reservetime") Date reservetime, @Param("date") Date date);
+
+    List<History> getAll();
 }

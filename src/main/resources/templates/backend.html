@@ -22,7 +22,6 @@
             <li class="layui-nav-item">
                 <a href="javascript:;"><span th:text="${session.admin.getName}">管理员</span></a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">帮助中心</a></dd>
                     <dd><a href="/logout">退出</a></dd>
                 </dl>
             </li>
@@ -53,8 +52,8 @@
                         <em>座位信息</em>
                     </a>
                     <dl class="layui-nav-child">
-                        <dd><a href="backend/seatinfo"><i class="layui-icon layui-icon-template"></i>修改座位布局</a></dd> <!--可以修改座位状态-->
-                        <dd><a href="backend/insertseats"><i class="layui-icon layui-icon-add-circle"></i>座位状态管理</a></dd>
+                        <dd><a href="backend/seatInfo"><i class="layui-icon layui-icon-template"></i>修改座位布局</a></dd> <!--可以修改座位状态-->
+                        <dd><a href="backend/insertSeats"><i class="layui-icon layui-icon-add-circle"></i>座位状态管理</a></dd>
                         <!--                        <dd><a href="views/seatview"><i class="layui-icon layui-icon-print"></i>座位预约情况</a></dd>-->
                     </dl>
                 </li>
@@ -64,10 +63,10 @@
                         <em>用户信息</em>
                     </a>
                     <dl class="layui-nav-child">
-<!--                        <dd><a href="backend/userCredit"><i class="layui-icon layui-icon-user"></i>用户信息管理</a></dd>-->
-<!--                        <dd><a href="backend/userRecord"><i class="layui-icon layui-icon-set-sm"></i>用户选座记录</a></dd>-->
-                        <dd><a href="javascript:;"><i class="layui-icon layui-icon-user"></i>用户信息管理</a></dd>
-                        <dd><a href="javascript:;"><i class="layui-icon layui-icon-set-sm"></i>用户选座记录</a></dd>
+                        <!--                        <dd><a href="backend/userCredit"><i class="layui-icon layui-icon-user"></i>用户信息管理</a></dd>-->
+                        <!--                        <dd><a href="backend/userRecord"><i class="layui-icon layui-icon-set-sm"></i>用户选座记录</a></dd>-->
+                        <dd><a href="backend/userInfo"><i class="layui-icon layui-icon-user"></i>用户信息管理</a></dd>
+                        <dd><a href="backend/userHistory"><i class="layui-icon layui-icon-set-sm"></i>用户选座记录</a></dd>
                     </dl>
                 </li>
             </ul>

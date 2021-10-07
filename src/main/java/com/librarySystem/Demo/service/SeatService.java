@@ -2,11 +2,10 @@ package com.librarySystem.Demo.service;
 
 import com.librarySystem.Demo.dao.HistoryDao;
 import com.librarySystem.Demo.dao.SeatDao;
-import com.librarySystem.Demo.dao.UserDao;
-import com.librarySystem.Demo.entity.History;
+import com.librarySystem.Demo.dao.SystemDao;
 import com.librarySystem.Demo.entity.Seat;
+import com.librarySystem.Demo.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +18,7 @@ public class SeatService
     SeatDao seatDao;
 
     @Autowired
-    UserDao userDao;
+    SystemDao userDao;
 
     @Autowired
     HistoryDao historyDao;
@@ -43,7 +42,7 @@ public class SeatService
         List<Seat> seatList = seatDao.getSeatByCampus(campus);
         int[] idleList = new int[floorNum];
         for (Seat seat : seatList) {
-            double index = (double) seat.getOccupyNum() / (double) seat.getDeskType();
+            double index = (double) seat.getOccupynum() / (double) seat.getDesktype();
             if (index <= idleIndex) {
                 int i = seat.getFloor() - 1;
                 idleList[i] += 1;
@@ -72,7 +71,24 @@ public class SeatService
         // 添加选座历史记录
         i += historyDao.insert(userId, seatId, time);
         // 修改座位人数
-        i += seatDao.changeNum(seatId);
+        i += seatDao.upNum(seatId);
+
+        return i == 3;
+    }
+
+    @Transactional
+    public Boolean signOut(User user, Date date)
+    {
+        int seatId = user.getSeatId();
+        String userId = user.getId();
+
+        int i = 0;
+        // 修改用户信息
+        i += userDao.signOut(userId);
+        // 修改选座历史记录
+        i += historyDao.updateSignout(userId, seatId, user.getReservetime(), date);
+        // 修改座位人数
+        i += seatDao.downNum(seatId);
 
         return i == 3;
     }

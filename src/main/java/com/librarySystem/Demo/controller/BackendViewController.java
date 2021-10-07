@@ -9,12 +9,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BackendViewController
 {
 
-    String v = "views/";
+    String v = "backend/";
 
+    // 主页
     @GetMapping("/homePage")
     public String consoleBack()
     {
-        return "backend/" + "homePage";
+        return v + "homePage";
+    }
+
+    // 座位信息
+    @GetMapping("/seatInfo")
+    public String seatInfo()
+    {
+        return v + "seatInfo";
+    }
+
+    @GetMapping("/insertSeats")
+    public String insertSeats()
+    {
+        return v + "insertSeats";
+    }
+
+    // 用户信息
+    @GetMapping("/userInfo")
+    public String userInfo()
+    {
+        return v + "userInfo";
+    }
+
+    @GetMapping("/userHistory")
+    public String userHistory()
+    {
+        return v + "userHistory";
     }
 
     @GetMapping("/form")
@@ -29,12 +56,6 @@ public class BackendViewController
         return v + "guide";
     }
 
-    @GetMapping("/insertseats")
-    public String insertseats()
-    {
-        return v + "insertseats";
-    }
-
     @GetMapping("/insertuser")
     public String insertuser()
     {
@@ -45,30 +66,6 @@ public class BackendViewController
     public String operaterule()
     {
         return v + "operaterule";
-    }
-
-    @GetMapping("/searchbook")
-    public String searchbook()
-    {
-        return v + "searchbook";
-    }
-
-    @GetMapping("/seatinfo")
-    public String seatinfo()
-    {
-        return v + "seatinfo";
-    }
-
-    @GetMapping("/seatview")
-    public String seatview()
-    {
-        return v + "seatview";
-    }
-
-    @GetMapping("/userinfo")
-    public String userinfo()
-    {
-        return v + "userinfo";
     }
 
     @GetMapping("/userinfomanage")
@@ -83,9 +80,4 @@ public class BackendViewController
         return v + "users";
     }
 
-    @GetMapping("/qrcode")
-    public String qrcode()
-    {
-        return v + "qrcode";
-    }
 }

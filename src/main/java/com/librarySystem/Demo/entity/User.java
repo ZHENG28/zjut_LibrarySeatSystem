@@ -13,8 +13,10 @@ public class User
     private int identity;
     private int gender;
     private String campus;
+    private String faculty;
+    private String liketag;
     private int seatId;
-    private Date reserveTime;
+    private Date reservetime;
     private int state;
     private int violate;
 
