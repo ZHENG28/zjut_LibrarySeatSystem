@@ -21,28 +21,28 @@
     <div class="layui-row layui-col-space20">
         <div class="layui-fluid">
             <div class="layui-card" id="mgs-one">
-                空闲桌：<span th:text="${idleList[0]}"></span></br>
-                楼层状态：<span th:style="'color:'+${'已满' eq stateList[0]?'red':('较满' eq stateList[0]?'yellow':'green')}" th:text="${stateList[0]}"></span>
+                <div class="layui-row">
+                    <p class="layui-col-md3 layui-col-md-offset1">空闲桌：<span th:text="${idleList[0]}"></span></p>
+                    <p class="layui-col-md4 layui-col-md-offset1">楼层状态：<span th:style="'color:'+${'已满' eq stateList[0]?'red':('较满' eq stateList[0]?'yellow':'green')}" th:text="${stateList[0]}"></span></p>
+                    <p class="layui-col-md1 layui-col-md-offset1"><button class="layui-btn layui-btn-primary layui-border-black" style="float:right" onclick="window.location.href='/foreend/seatInfo'">选择第一层</button></p>
+                </div>
                 <script src="../js/seat/mgs/mgs_one.js" type="module"></script>
-                <button class="layui-btn layui-btn-primary layui-border-black" style="float:right"
-                        onclick="window.location.href='/foreend/seatInfo'">选择第一层
-                </button>
             </div>
             <div class="layui-card" id="mgs-two">
-                空闲桌：<span th:text="${idleList[1]}"></span></br>
-                楼层状态：<span th:style="'color:'+${'已满' eq stateList[1]?'red':('较满' eq stateList[1]?'yellow':'green')}" th:text="${stateList[1]}"></span>
+                <div class="layui-row">
+                    <p class="layui-col-md3 layui-col-md-offset1">空闲桌：<span th:text="${idleList[1]}"></span></p>
+                    <p class="layui-col-md4 layui-col-md-offset1">楼层状态：<span th:style="'color:'+${'已满' eq stateList[1]?'red':('较满' eq stateList[1]?'yellow':'green')}" th:text="${stateList[1]}"></span></p>
+                    <p class="layui-col-md1 layui-col-md-offset1"><button class="layui-btn layui-btn-primary layui-border-black" style="float:right" onclick="window.location.href='/foreend/seatInfo'">选择第二层</button></p>
+                </div>
                 <script src="../js/seat/mgs/mgs_two.js" type="module"></script>
-                <button class="layui-btn layui-btn-primary layui-border-black" style="float:right"
-                        onclick="window.location.href='/foreend/seatInfo'">选择第二层
-                </button>
             </div>
             <div class="layui-card" id="mgs-three">
-                空闲桌：<span th:text="${idleList[2]}"></span></br>
-                楼层状态：<span th:style="'color:'+${'已满' eq stateList[2]?'red':('较满' eq stateList[2]?'yellow':'green')}" th:text="${stateList[2]}"></span>
+                <div class="layui-row">
+                    <p class="layui-col-md3 layui-col-md-offset1">空闲桌：<span th:text="${idleList[2]}"></span></p>
+                    <p class="layui-col-md4 layui-col-md-offset1">楼层状态：<span th:style="'color:'+${'已满' eq stateList[2]?'red':('较满' eq stateList[2]?'yellow':'green')}" th:text="${stateList[2]}"></span></p>
+                    <p class="layui-col-md1 layui-col-md-offset1"><button class="layui-btn layui-btn-primary layui-border-black" style="float:right" onclick="window.location.href='/foreend/seatInfo'">选择第三层</button></p>
+                </div>
                 <script src="../js/seat/mgs/mgs_three.js" type="module"></script>
-                <button class="layui-btn layui-btn-primary layui-border-black" style="float:right"
-                        onclick="window.location.href='/foreend/seatInfo'">选择第三层
-                </button>
             </div>
         </div>
     </div>
