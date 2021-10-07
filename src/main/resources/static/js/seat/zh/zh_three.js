@@ -1,8 +1,8 @@
-import * as THREE from '/three.js-master/build/three.module.js';
+import * as THREE from '/js/three.js-master/build/three.module.js';
 
-import {OBJLoader} from '/three.js-master/examples/jsm/loaders/OBJLoader.js';
-import {MTLLoader} from '/three.js-master/examples/jsm/loaders/MTLLoader.js';
-import {OrbitControls} from '/three.js-master/examples/jsm/controls/OrbitControls.js';
+import {OBJLoader} from '/js/three.js-master/examples/jsm/loaders/OBJLoader.js';
+import {MTLLoader} from '/js/three.js-master/examples/jsm/loaders/MTLLoader.js';
+import {OrbitControls} from '/js/three.js-master/examples/jsm/controls/OrbitControls.js';
 
 let container;
 
@@ -19,10 +19,11 @@ animate();
 function init() {
     container = document.createElement('div');
     container.style.height = '100px';
+    container.style.textAlign = 'center';
     document.getElementById("zh-three").appendChild(container);
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
-    camera.position.z = 5;
+    camera.position.z = 3;
 
     // scene
     scene = new THREE.Scene();
@@ -35,7 +36,7 @@ function init() {
         object.position.y = 0.5;
         object.rotateX(1);
         object.rotateY(4.7);
-        object.rotateZ(0.7);
+        object.rotateZ(0.6);
         scene.add(object);
     }
 
@@ -69,6 +70,7 @@ function init() {
     renderer.setPixelRatio(window.devicePixelRatio);
     // canvas大小
     renderer.setSize(canvasX, canvasY);
+    renderer.domElement.style.display = '';
     container.appendChild(renderer.domElement);
 
     window.addEventListener('resize', onWindowResize);

@@ -1,4 +1,4 @@
-import * as THREE from '/three.js-master/build/three.module.js';
+import * as THREE from '/js/three.js-master/build/three.module.js';
 
 THREE.Cache.enabled = true;
 
@@ -112,7 +112,7 @@ function onWindowResize() {
 
 function loadFont() {
     const loader = new THREE.FontLoader();
-    loader.load('/three.js-master/examples/fonts/kaiti_lss.json', function (response) {
+    loader.load('/js/three.js-master/examples/fonts/kaiti_lss.json', function (response) {
         font = response;
         refreshText();
     });

@@ -123,9 +123,9 @@ CREATE TABLE `userinfo`  (
 -- ----------------------------
 -- Records of userinfo
 -- ----------------------------
-INSERT INTO `userinfo` VALUES ('0101', '王五', '123', 0, NULL, '屏峰', NULL, 0, 0);
-INSERT INTO `userinfo` VALUES ('1111', '张三', '123', 1, NULL, '屏峰', NULL, 0, 0);
-INSERT INTO `userinfo` VALUES ('2222', '李四', '123', 1, NULL, '朝晖', NULL, 0, 0);
-INSERT INTO `userinfo` VALUES ('3333', '陈二', '123', 1, NULL, '莫干山', NULL, 0, 0);
+INSERT INTO `userinfo` VALUES ('0101', '王五', '123', 0, NULL, '屏峰', NULL, NUll, 0, 0);
+INSERT INTO `userinfo` VALUES ('1111', '张三', '123', 1, NULL, '屏峰', NULL, NUll, 0, 0);
+INSERT INTO `userinfo` VALUES ('2222', '李四', '123', 1, NULL, '朝晖', NULL, NUll, 0, 0);
+INSERT INTO `userinfo` VALUES ('3333', '陈二', '123', 1, NULL, '莫干山', NULL, NUll, 0, 0);
 
 SET FOREIGN_KEY_CHECKS = 1;

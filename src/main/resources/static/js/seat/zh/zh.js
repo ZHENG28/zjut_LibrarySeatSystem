@@ -1,7 +1,7 @@
-import * as THREE from '/three.js-master/build/three.module.js';
+import * as THREE from '/js/three.js-master/build/three.module.js';
 
-import {OBJLoader} from '/three.js-master/examples/jsm/loaders/OBJLoader.js';
-import {MTLLoader} from '/three.js-master/examples/jsm/loaders/MTLLoader.js';
+import {OBJLoader} from '/js/three.js-master/examples/jsm/loaders/OBJLoader.js';
+import {MTLLoader} from '/js/three.js-master/examples/jsm/loaders/MTLLoader.js';
 
 let container;
 
@@ -11,6 +11,7 @@ let canvasX = window.innerWidth / 3.5;
 let canvasY = window.innerHeight / 3;
 
 let object;
+
 
 init();
 animate();

@@ -5,4 +5,11 @@
         insert into historyrecord(userid, seatid, reservation)
         values (#{userId}, #{seatId}, #{time})
     </insert>
+    <select id="getHistoryByUser" resultType="com.librarySystem.Demo.entity.History">
+        select *
+        from historyrecord
+        where userid = #{userId}
+          and seatid = #{seatId}
+          and reservation = #{reserveTime}
+    </select>
 </mapper>

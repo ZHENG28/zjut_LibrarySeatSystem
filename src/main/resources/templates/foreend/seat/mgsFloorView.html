@@ -9,16 +9,40 @@
 </head>
 <body class="layui-view-body">
 <div class="layui-content">
+    <div class="layui-page-header">
+        <div class="pagewrap">
+                <span class="layui-breadcrumb">
+<!--                  <a href="javascript:history.back();">图书馆选择</a>-->
+                  <a href="/foreend/seatView">图书馆选择</a>
+                  <a href="javascript:;">楼层选择</a>
+                </span>
+        </div>
+    </div>
     <div class="layui-row layui-col-space20">
-        <div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
+        <div class="layui-fluid">
             <div class="layui-card" id="mgs-one">
-                <script src="../main/js/mgs/mgs_one.js" type="module"></script>
+                空闲桌：<span th:text="${idleList[0]}"></span></br>
+                楼层状态：<span th:style="'color:'+${'已满' eq stateList[0]?'red':('较满' eq stateList[0]?'yellow':'green')}" th:text="${stateList[0]}"></span>
+                <script src="../js/seat/mgs/mgs_one.js" type="module"></script>
+                <button class="layui-btn layui-btn-primary layui-border-black" style="float:right"
+                        onclick="window.location.href='/foreend/seatInfo'">选择第一层
+                </button>
             </div>
             <div class="layui-card" id="mgs-two">
-                <script src="../main/js/mgs/mgs_two.js" type="module"></script>
+                空闲桌：<span th:text="${idleList[1]}"></span></br>
+                楼层状态：<span th:style="'color:'+${'已满' eq stateList[1]?'red':('较满' eq stateList[1]?'yellow':'green')}" th:text="${stateList[1]}"></span>
+                <script src="../js/seat/mgs/mgs_two.js" type="module"></script>
+                <button class="layui-btn layui-btn-primary layui-border-black" style="float:right"
+                        onclick="window.location.href='/foreend/seatInfo'">选择第二层
+                </button>
             </div>
             <div class="layui-card" id="mgs-three">
-                <script src="../main/js/mgs/mgs_three.js" type="module"></script>
+                空闲桌：<span th:text="${idleList[2]}"></span></br>
+                楼层状态：<span th:style="'color:'+${'已满' eq stateList[2]?'red':('较满' eq stateList[2]?'yellow':'green')}" th:text="${stateList[2]}"></span>
+                <script src="../js/seat/mgs/mgs_three.js" type="module"></script>
+                <button class="layui-btn layui-btn-primary layui-border-black" style="float:right"
+                        onclick="window.location.href='/foreend/seatInfo'">选择第三层
+                </button>
             </div>
         </div>
     </div>

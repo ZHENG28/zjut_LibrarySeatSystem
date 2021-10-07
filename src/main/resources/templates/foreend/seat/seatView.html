@@ -10,17 +10,24 @@
 </head>
 <body class="layui-view-body">
 <div class="layui-content">
+    <div class="layui-page-header">
+        <div class="pagewrap">
+                <span class="layui-breadcrumb">
+                  <a href="javascript:;">图书馆选择</a>
+                </span>
+        </div>
+    </div>
     <div class="layui-row layui-col-space20">
         <div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
             <div class="layui-card">
-                <div class="layui-card-body chart-card">
+                <div class="layui-card-body chart-card" onclick="window.location.href='/seat/toFloor?campus=朝晖'">
                     <div class="chart-header">
                         <div class="metawrap">
-                            <div class="total"><a href="/toZHfloor">朝晖校区</a></div>
+                            <div class="total"><a href="/seat/toFloor?campus=朝晖">朝晖校区</a></div>
                         </div>
                     </div>
                     <div class="chart-footer">
-                        <div class="field" id="zh-map" onclick="toZHfloor()">
+                        <div class="field" id="zh-map">
                             <script src="../js/seat/zh/zh.js" type="module"></script>
                         </div>
                     </div>
@@ -29,70 +36,58 @@
         </div>
         <div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
             <div class="layui-card">
-                <div class="layui-card-body chart-card">
+                <div class="layui-card-body chart-card" onclick="window.location.href='/seat/toFloor?campus=屏峰'">
                     <div class="chart-header">
                         <div class="metawrap">
-                            <div class="total"><a href="/toPFfloor">屏峰校区</a></div>
+                            <div class="total"><a href="/seat/toFloor?campus=屏峰">屏峰校区</a></div>
                         </div>
                     </div>
                     <div class="chart-footer">
-                        <div class="field" id="pf-map" onclick="toPFfloor()">
+                        <div class="field" id="pf-map">
                             <script src="../js/seat/pf/pf.js" type="module"></script>
                         </div>
                     </div>
                 </div>
             </div>
-        </div><div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
-        <div class="layui-card">
-            <div class="layui-card-body chart-card">
-                <div class="chart-header">
-                    <div class="metawrap">
-                        <div class="total"><a href="/toMGSfloor">莫干山校区</a></div>
-                    </div>
-                </div>
-                <div class="chart-footer">
-                    <div class="field" id="mgs-map" onclick="toMGSfloor()">
-                        <script src="../js/seat/mgs/mgs.js" type="module"></script>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
-
-        <div class="layui-col-xs6 layui-col-md12 layui-inline">
+        <div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
             <div class="layui-card">
-                <div class="layui-card-body chart-card">
+                <div class="layui-card-body chart-card" onclick="window.location.href='/seat/toFloor?campus=莫干山'">
                     <div class="chart-header">
                         <div class="metawrap">
-                            <div class="total">选中预览</div>
+                            <div class="total"><a href="/seat/toFloor?campus=莫干山">莫干山校区</a></div>
                         </div>
                     </div>
                     <div class="chart-footer">
-                        <div class="field">
-                            <span id="printview"><h1>选中预览</h1></span>
+                        <div class="field" id="mgs-map">
+                            <script src="../js/seat/mgs/mgs.js" type="module"></script>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!--        <div class="layui-col-xs6 layui-col-md12 layui-inline">-->
+        <!--            <div class="layui-card">-->
+        <!--                <div class="layui-card-body chart-card">-->
+        <!--                    <div class="chart-header">-->
+        <!--                        <div class="metawrap">-->
+        <!--                            <div class="total">选中预览</div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="chart-footer">-->
+        <!--                        <div class="field">-->
+        <!--                            <span id="printview"><h1>选中预览</h1></span>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
     </div>
 </div>
 <script src="../assets/layui.all.js"></script>
 <script>
     var element = layui.element;
-
-    function toZHfloor() {
-        // return "";
-        $('#printview h1').text('选中朝晖');
-    }
-
-    function toPFfloor() {
-        $('#printview h1').text('选中屏峰');
-    }
-
-    function toMGSfloor() {
-        $('#printview h1').text('选中莫干山');
-    }
 </script>
 </body>
 </html>

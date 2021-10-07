@@ -12,6 +12,17 @@
         from seatinfo
         where seatid = #{seatId}
     </select>
+    <select id="getSeatByCampus" resultType="com.librarySystem.Demo.entity.Seat">
+        select *
+        from seatinfo
+        where campus = #{campus}
+    </select>
+    <select id="getNumByFloor" resultType="java.lang.Integer">
+        select count(seatid)
+        from seatinfo
+        where campus = #{campus}
+          and floor = #{floor}
+    </select>
 
     <update id="changeNum">
         update seatinfo

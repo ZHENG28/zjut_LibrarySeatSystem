@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -24,6 +25,18 @@ public class SeatController
     public List<Seat> getSeatInfo()
     {
         return seatService.getSeatInfo();
+    }
+
+    @RequestMapping("/toFloor")
+    public ModelAndView toFloor(String campus)
+    {
+        ModelAndView mv = new ModelAndView();
+        int floorNum = "朝晖".equals(campus) || "莫干山".equals(campus) ? 3 : 5;
+        mv.addObject("idleList", seatService.getIdleList(campus, floorNum));
+        mv.addObject("stateList", seatService.getState(campus, floorNum));
+        String str = "朝晖".equals(campus) ? "zh" : ("屏峰".equals(campus) ? "pf" : "mgs");
+        mv.setViewName("foreend/seat/" + str + "FloorView");
+        return mv;
     }
 
     @RequestMapping("/reserve")

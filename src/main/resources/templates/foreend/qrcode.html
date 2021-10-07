@@ -24,13 +24,18 @@
                     <div class="layui-font-20">
                         <p>
                             您当前的座位：<span id="seatId" th:text="${seatInfo}"></span>
-                            <button class="layui-btn-radius layui-btn" id="signin">签到<i class="layui-icon layui-icon-ok-circle"></i></button>
-                            <button class="layui-btn-radius layui-btn layui-btn-danger" id="signout">签退<i class="layui-icon layui-icon-close-fill"></i></button>
+                            <button class="layui-btn-radius layui-btn" id="signin" onclick="qrcode('签到')">签到<i
+                                    class="layui-icon layui-icon-ok-circle"></i></button>
+                            <button class="layui-btn-radius layui-btn layui-btn-danger" id="signout" onclick="qrcode('签退')">签退<i
+                                    class="layui-icon layui-icon-close-fill"></i></button>
 
                         </p>
                         <p style="margin: 5px">
                             您当前的状态：<span id="state" th:text="${state}"></span>
-                            <button class="layui-btn-radius layui-btn layui-btn-warm" id="stop">暂离座位<i class="layui-icon layui-icon-close-fill"></i></button>
+                            <button class="layui-btn-radius layui-btn layui-btn-warm" id="stop">暂离座位<i class="layui-icon layui-icon-close-fill"></i>
+                            </button>
+                            <button class="layui-btn-radius layui-btn layui-btn-warm" id="back">返回座位
+                                <i class="layui-icon layui-icon-close-fill"></i></button>
                         </p>
                         <p style="margin: 5px">
                             您当前的违规次数：<span id="violate" th:text="${violate}"></span>
@@ -53,21 +58,22 @@
         dataType: "json",
         contentType: "application/json;charset=UTF-8",
         success: function (response) {
-            console.log(response);
-            // layui-btn-disabled
+            $("#signin").addClass(response.signin ? "" : "layui-btn-disabled");
+            $("#signout").addClass(response.signout ? "" : "layui-btn-disabled");
+            $("#stop").addClass(response.stop ? "" : "layui-btn-disabled");
+            $("#back").addClass(response.back ? "" : "layui-btn-disabled");
         }
     }));
 
     // 参考网页: https://www.layui.com/doc/modules/layer.html
     let content = "<img src=" + $('#userqr').text() + "/>";
-    $('#signin').click(qrcode());
 
-    function qrcode() {
+    function qrcode(str) {
         let index = layer.open({
             skin: 'layui-layer-lan',//皮肤，可选，这里用了内置参数
-            area:'450px',
+            area: '450px',
             offset: '100px',//相对于内嵌页面
-            title: '扫一扫切换状态',
+            title: '扫一扫' + str,
             type: 0,//信息框
             // content: '传入任意的文本或html', //content是可以是 string或者html
             content: content,
