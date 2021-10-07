@@ -1,6 +1,6 @@
 package com.librarySystem.Demo.service;
 
-import com.librarySystem.Demo.dao.SystemDao;
+import com.librarySystem.Demo.dao.UserDao;
 import com.librarySystem.Demo.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class UserService
 {
     @Autowired
-    SystemDao userDao;
+    UserDao userDao;
 
     public boolean findByIdentity(String identity, String account)
     {

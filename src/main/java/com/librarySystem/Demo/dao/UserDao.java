@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface SystemDao
+public interface UserDao
 {
     User findByIdentity(String identity, String account);
 

@@ -2,7 +2,7 @@ package com.librarySystem.Demo.service;
 
 import com.librarySystem.Demo.dao.HistoryDao;
 import com.librarySystem.Demo.dao.SeatDao;
-import com.librarySystem.Demo.dao.SystemDao;
+import com.librarySystem.Demo.dao.UserDao;
 import com.librarySystem.Demo.entity.Seat;
 import com.librarySystem.Demo.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class SeatService
     SeatDao seatDao;
 
     @Autowired
-    SystemDao userDao;
+    UserDao userDao;
 
     @Autowired
     HistoryDao historyDao;

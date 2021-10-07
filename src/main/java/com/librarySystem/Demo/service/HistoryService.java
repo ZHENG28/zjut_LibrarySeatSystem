@@ -2,7 +2,7 @@ package com.librarySystem.Demo.service;
 
 import com.librarySystem.Demo.dao.HistoryDao;
 import com.librarySystem.Demo.dao.SeatDao;
-import com.librarySystem.Demo.dao.SystemDao;
+import com.librarySystem.Demo.dao.UserDao;
 import com.librarySystem.Demo.entity.History;
 import com.librarySystem.Demo.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class HistoryService
     SeatDao seatDao;
 
     @Autowired
-    SystemDao userDao;
+    UserDao userDao;
 
     public History getHistoryByUser(User user)
     {
