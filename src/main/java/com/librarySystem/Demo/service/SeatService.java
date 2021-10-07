@@ -66,15 +66,14 @@ public class SeatService
     @Transactional
     public Boolean reserve(String userId, Integer seatId, Date time)
     {
+        int i = 0;
         // 修改用户信息
-        userDao.reserve(userId, seatId, time);
+        i += userDao.reserve(userId, seatId, time);
         // 添加选座历史记录
-        historyDao.insert(userId, seatId, time);
+        i += historyDao.insert(userId, seatId, time);
         // 修改座位人数
-        seatDao.changeNum(seatId);
+        i += seatDao.changeNum(seatId);
 
-        // 全部完成成功后，提交事务，返回true
-        // 否则返回false
-        return false;
+        return i == 3;
     }
 }

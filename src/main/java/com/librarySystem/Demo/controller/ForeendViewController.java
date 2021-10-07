@@ -45,6 +45,7 @@ public class ForeendViewController
         ModelAndView mv = new ModelAndView();
         User user = (User) request.getSession().getAttribute("user");
         user.setSeat(seatService.getSeatById(user.getSeatId()));
+        System.out.println(user.getSeat());
 
         String curState = "";
         switch (user.getState()) {
