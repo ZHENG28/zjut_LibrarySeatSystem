@@ -76,28 +76,50 @@
                             <div class="total">座位推荐</div>
                         </div>
                     </div>
-                    <table id="recommend"></table>
+                    <table id="recommend" lay-filter="seatRecommend"></table>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script src="../assets/layui.js"></script>
-<script>
-    var element = layui.element;
-    let table = layui.table;
+<script type="text/html" id="btn">
+    <button class="layui-btn layui-btn-blue layui-btn-sm" lay-event="order">预约</button>
+</script>
+<script th:inline="none">
+    $(function (){
+        var element = layui.element;
+        var table = layui.table;
 
-    let userid = $('#userid').text();
-    ($.ajax({
-        url: "/seat/recommend",
-        type: "GET",
-        dataType: "json",
-        data: {
-            userid: userid,
-        },
-        success: function (response) {
-        },
-    }));
+        let userid = $('#userid').text();
+        $.ajax({
+            url: "/seat/recommend",
+            type: "GET",
+            dataType: "json",
+            data: {
+                userid: userid,
+            },
+            contentType: "application/json;charset=UTF-8",
+            success: function (response) {
+                table.render({
+                    elem: "#recommend"
+                    , cols: [[//标题栏
+                        {field: 'seatid', title: '编号', width: 150, sort: true}
+                        , {field: 'campus', title: '校区', width: 150, sort: true}
+                        , {field: 'floor', title: '楼层', width: 120, sort: true}
+                        , {field: 'deskno', title: '桌号', width: 100, sort: true}
+                        , {field: 'desktype', title: '桌子类型', width: 120, sort: true}
+                        , {field: 'occupynum', title: '已选人数', width: 120, sort: true}
+                        , {field: 'btn', align: 'center', title: '操作', width: 80, toolbar: '#btn'}
+                    ]]
+                    , data: response
+                    , skin: 'line' //表格风格
+                    , even: true
+                    , page: false //是否显示分页
+                });
+            }
+        })
+    })
 </script>
 </body>
 </html>
