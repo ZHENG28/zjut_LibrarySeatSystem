@@ -77,6 +77,12 @@ public class UserService
         return info;
     }
 
+    public Boolean updateState(User user, String str)
+    {
+        int state = "stop".equals(str) ? 2 : 1;
+        return userDao.updateState(user.getId(), state) == 1;
+    }
+
 //    public boolean register(String sno, String sname, String password, String campus)
 //    {
 //        return systemDao.register(sno, sname, password, campus) == 1;

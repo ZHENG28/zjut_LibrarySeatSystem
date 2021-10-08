@@ -127,11 +127,29 @@
     }
 
     function stopSeat() {
-
+        $.ajax({
+            url: "/history/stop",
+            type: "GET",
+            dataType: "json",
+            success: function (response) {
+                if (response) {
+                    getBtnState();
+                }
+            }
+        });
     }
 
     function backSeat() {
-
+        $.ajax({
+            url: "/history/back",
+            type: "GET",
+            dataType: "json",
+            success: function (response) {
+                if (response) {
+                    getBtnState();
+                }
+            }
+        });
     }
 </script>
 </body>

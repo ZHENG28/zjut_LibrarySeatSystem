@@ -5,6 +5,7 @@ import com.librarySystem.Demo.entity.History;
 import com.librarySystem.Demo.entity.User;
 import com.librarySystem.Demo.service.HistoryService;
 import com.librarySystem.Demo.service.SeatService;
+import com.librarySystem.Demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,9 @@ public class HistoryController
 
     @Autowired
     SeatService seatService;
+
+    @Autowired
+    UserService userService;
 
     @Autowired
     UserDao userDao;
@@ -62,5 +66,23 @@ public class HistoryController
         User user = (User) request.getSession().getAttribute("user");
         user = userDao.getCurInfo(user.getId());
         return seatService.signOut(user, date);
+    }
+
+    @GetMapping("/stop")
+    @ResponseBody
+    public Object stopSeat(HttpServletRequest request)
+    {
+        User user = (User) request.getSession().getAttribute("user");
+        user = userDao.getCurInfo(user.getId());
+        return userService.updateState(user,"stop");
+    }
+
+    @GetMapping("/back")
+    @ResponseBody
+    public Object backSeat(HttpServletRequest request)
+    {
+        User user = (User) request.getSession().getAttribute("user");
+        user = userDao.getCurInfo(user.getId());
+        return userService.updateState(user,"back");
     }
 }

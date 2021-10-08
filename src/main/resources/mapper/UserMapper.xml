@@ -35,6 +35,11 @@
             state=0
         where id = ${userId}
     </update>
+    <update id="updateState">
+        update userinfo
+        set state = #{state}
+        where id = #{userid}
+    </update>
 
     <select id="getAll" resultType="com.librarySystem.Demo.entity.User">
         select *

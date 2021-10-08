@@ -26,6 +26,8 @@ public interface UserDao
 
     List<User> getUserByFaculty(String faculty);
 
+    int updateState(@Param("userid") String id, @Param("state") int state);
+
 //    int register(String sno, String sname, String password, String campus);
 //
 //    User searchUserById(String id);
