@@ -23,6 +23,13 @@
         where campus = #{campus}
           and floor = #{floor}
     </select>
+    <select id="getSeatByTag" resultType="com.librarySystem.Demo.entity.Seat">
+        SELECT *
+        FROM seatinfo
+        WHERE tag LIKE #{str}
+        ORDER BY (desktype - occupynum) / desktype DESC
+        LIMIT 5
+    </select>
 
     <update id="upNum">
         update seatinfo

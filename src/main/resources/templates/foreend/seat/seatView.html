@@ -67,6 +67,7 @@
             </div>
         </div>
 
+        <div id="userid" hidden th:text="${session.user.getId()}"></div>
         <div class="layui-col-xs6 layui-col-md12 layui-inline">
             <div class="layui-card">
                 <div class="layui-card-body chart-card">
@@ -75,11 +76,7 @@
                             <div class="total">座位推荐</div>
                         </div>
                     </div>
-                    <div class="chart-footer">
-                        <div class="field">
-                            <span id="printview"><h1>选中预览</h1></span>
-                        </div>
-                    </div>
+                    <table id="recommend"></table>
                 </div>
             </div>
         </div>
@@ -88,6 +85,19 @@
 <script src="../assets/layui.js"></script>
 <script>
     var element = layui.element;
+    let table = layui.table;
+
+    let userid = $('#userid').text();
+    ($.ajax({
+        url: "/seat/recommend",
+        type: "GET",
+        dataType: "json",
+        data: {
+            userid: userid,
+        },
+        success: function (response) {
+        },
+    }));
 </script>
 </body>
 </html>

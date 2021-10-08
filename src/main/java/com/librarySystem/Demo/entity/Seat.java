@@ -5,13 +5,13 @@ import lombok.Data;
 @Data
 public class Seat
 {
-
     private int seatid;
     private String campus;
     private int floor;
     private int deskno;
     private int desktype;
     private int occupynum;
+    private String tag;
 
     public Seat()
     {

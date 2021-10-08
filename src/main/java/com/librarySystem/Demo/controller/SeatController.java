@@ -63,4 +63,11 @@ public class SeatController
         return seatService.update(user.getId());
     }
 
+    @RequestMapping("/recommend")
+    @ResponseBody
+    public Object personalRecommend(HttpServletRequest request)
+    {
+        User user = (User) request.getSession().getAttribute("user");
+        return seatService.personalRecommend(user.getId());
+    }
 }

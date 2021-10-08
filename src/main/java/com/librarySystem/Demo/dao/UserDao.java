@@ -24,6 +24,8 @@ public interface UserDao
 
     User getCurInfo(String userId);
 
+    List<User> getUserByFaculty(String faculty);
+
 //    int register(String sno, String sname, String password, String campus);
 //
 //    User searchUserById(String id);

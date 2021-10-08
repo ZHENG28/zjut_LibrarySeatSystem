@@ -45,6 +45,11 @@
         from userinfo
         where id = #{userId}
     </select>
+    <select id="getUserByFaculty" resultType="com.librarySystem.Demo.entity.User">
+        select *
+        from userinfo
+        where faculty = #{faculty}
+    </select>
 
     <!--    <insert id="register">-->
     <!--        insert into t_studentinfo(sno, sname, pswd, campus)-->

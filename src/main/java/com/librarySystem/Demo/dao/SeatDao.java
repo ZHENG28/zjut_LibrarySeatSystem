@@ -5,7 +5,6 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Map;
 
 @Repository
 public interface SeatDao
@@ -21,4 +20,6 @@ public interface SeatDao
     List<Seat> getSeatByCampus(String campus);
 
     int getNumByFloor(@Param("campus") String campus, @Param("floor") int floor);
+
+    List<Seat> getSeatByTag(String str);
 }

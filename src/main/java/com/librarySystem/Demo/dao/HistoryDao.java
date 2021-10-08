@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface HistoryDao
@@ -21,4 +22,8 @@ public interface HistoryDao
     int updateSignout(@Param("id") String id, @Param("seatId") int seatId, @Param("reservetime") Date reservetime, @Param("date") Date date);
 
     List<History> getAll();
+
+    double getHistoryByTag(@Param("userid") String userid, @Param("tag") String tag);
+
+    List<String> getUserByTag(String maxTagId);
 }

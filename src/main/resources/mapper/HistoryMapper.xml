@@ -21,6 +21,20 @@
         select *
         from historyrecord
     </select>
+    <select id="getHistoryByTag" resultType="java.lang.Double">
+        SELECT ifnull(sum(hr.leavetime - hr.reachtime) / count(hr.id), 0.0)
+        FROM historyrecord hr
+                 JOIN seatinfo s ON hr.seatid = s.seatid
+        WHERE userid = #{userid}
+          and s.tag like #{tag}
+    </select>
+
+    <select id="getUserByTag" resultType="java.lang.String">
+        SELECT DISTINCT(hr.userid)
+        FROM seatinfo s
+                 JOIN historyrecord hr ON hr.seatid = s.seatid
+        WHERE tag LIKE #{maxTagId}
+    </select>
 
     <update id="updateSignin">
         update historyrecord
