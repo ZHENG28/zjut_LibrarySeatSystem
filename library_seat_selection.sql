@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 08/10/2021 21:05:32
+ Date: 08/10/2021 23:29:29
 */
 
 SET NAMES utf8mb4;
@@ -66,6 +66,9 @@ INSERT INTO `historyrecord` VALUES (17, '3333', 2, '2021-10-08 12:00:48', '2021-
 INSERT INTO `historyrecord` VALUES (18, '3333', 8, '2021-10-08 12:03:07', '2021-10-08 12:11:11', '2021-10-08 12:23:15');
 INSERT INTO `historyrecord` VALUES (19, '3333', 11, '2021-10-08 12:03:54', '2021-10-08 12:33:58', '2021-10-08 12:44:00');
 INSERT INTO `historyrecord` VALUES (20, '3334', 13, '2021-10-08 12:03:07', '2021-10-08 13:03:11', '2021-10-08 13:13:15');
+INSERT INTO `historyrecord` VALUES (21, '1111', 3, '2021-10-08 21:10:14', '2021-10-08 21:10:21', '2021-10-08 21:22:49');
+INSERT INTO `historyrecord` VALUES (22, '1111', 3, '2021-10-08 21:33:21', '2021-10-08 21:47:53', '2021-10-08 21:47:54');
+INSERT INTO `historyrecord` VALUES (23, '1111', 4, '2021-10-08 21:47:59', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for layout
@@ -102,10 +105,10 @@ CREATE TABLE `seatinfo`  (
 -- ----------------------------
 -- Records of seatinfo
 -- ----------------------------
-INSERT INTO `seatinfo` VALUES (1, '朝晖', 1, 2, 4, 6, '1,2,');
+INSERT INTO `seatinfo` VALUES (1, '朝晖', 1, 2, 4, 0, '1,2,');
 INSERT INTO `seatinfo` VALUES (2, '朝晖', 1, 7, 6, 6, '2,');
 INSERT INTO `seatinfo` VALUES (3, '朝晖', 1, 8, 6, 1, '5,');
-INSERT INTO `seatinfo` VALUES (4, '朝晖', 1, 3, 6, 2, '5,');
+INSERT INTO `seatinfo` VALUES (4, '朝晖', 1, 3, 6, 3, '5,');
 INSERT INTO `seatinfo` VALUES (5, '朝晖', 1, 4, 4, 0, '5,');
 INSERT INTO `seatinfo` VALUES (6, '朝晖', 1, 5, 6, 6, '3,4,');
 INSERT INTO `seatinfo` VALUES (7, '朝晖', 1, 6, 4, 3, '4,');
@@ -118,6 +121,7 @@ INSERT INTO `seatinfo` VALUES (13, '朝晖', 3, 9, 6, 4, '1,3,4,');
 INSERT INTO `seatinfo` VALUES (14, '朝晖', 3, 3, 4, 3, '5,');
 INSERT INTO `seatinfo` VALUES (15, '朝晖', 3, 6, 4, 1, '5,');
 INSERT INTO `seatinfo` VALUES (16, '朝晖', 3, 7, 4, 2, '2,');
+INSERT INTO `seatinfo` VALUES (17, '朝晖', 2, 1, 6, 0, '1,3,');
 
 -- ----------------------------
 -- Table structure for tag
@@ -166,9 +170,9 @@ CREATE TABLE `userinfo`  (
 -- Records of userinfo
 -- ----------------------------
 INSERT INTO `userinfo` VALUES ('0101', '王五', '123', 0, NULL, '屏峰', '计算机', NULL, NULL, NULL, 0, 0);
-INSERT INTO `userinfo` VALUES ('1111', '张三', '123', 1, NULL, '屏峰', '教科', NULL, NULL, NULL, 0, 0);
-INSERT INTO `userinfo` VALUES ('2222', '李四', '123', 1, NULL, '朝晖', '计算机', NULL, NULL, NULL, 0, 0);
-INSERT INTO `userinfo` VALUES ('3333', '陈二', '123', 1, NULL, '莫干山', '教科', NULL, NULL, NULL, 0, 0);
+INSERT INTO `userinfo` VALUES ('1111', '张三', '123', 1, NULL, '屏峰', '教科', '1,4,', 4, '2021-10-08 21:47:59', 1, 0);
+INSERT INTO `userinfo` VALUES ('2222', '李四', '123', 1, NULL, '朝晖', '计算机', '5,', NULL, NULL, 0, 0);
+INSERT INTO `userinfo` VALUES ('3333', '陈二', '123', 1, NULL, '莫干山', '教科', '3,', NULL, NULL, 0, 0);
 INSERT INTO `userinfo` VALUES ('3334', '陈小', '123', 1, NULL, '屏峰', '教科', NULL, NULL, NULL, 0, 0);
 
 SET FOREIGN_KEY_CHECKS = 1;
