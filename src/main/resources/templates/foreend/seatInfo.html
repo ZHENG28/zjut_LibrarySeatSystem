@@ -16,30 +16,6 @@
         <div class="layui-card">
             <div class="layui-card-body">
                 <div class="form-box">
-                    <!--                    <div class="layui-form layui-form-item">-->
-                    <!--                        <div class="layui-inline">-->
-                    <!--                            <div class="layui-form-mid">院区:</div>-->
-                    <!--                            <div class="layui-input-inline" style="width: 100px;">-->
-                    <!--                                <input type="text" autocomplete="off" class="layui-input">-->
-                    <!--                            </div>-->
-                    <!--                            <div class="layui-form-mid">楼层:</div>-->
-                    <!--                            <div class="layui-input-inline" style="width: 100px;">-->
-                    <!--                                <input type="text" autocomplete="off" class="layui-input">-->
-                    <!--                            </div>-->
-                    <!--                            <div class="layui-form-mid">桌号:</div>-->
-                    <!--                            <div class="layui-input-inline" style="width: 100px;">-->
-                    <!--                                <input type="text" autocomplete="off" class="layui-input">-->
-                    <!--                            </div>-->
-                    <!--                            <div class="layui-form-mid">状态:</div>-->
-                    <!--                            <div class="layui-input-inline" style="width: 100px;">-->
-                    <!--                                <input type="text" autocomplete="off" class="layui-input">-->
-                    <!--                            </div>-->
-                    <!--                            <div class="layui-btn-group">-->
-                    <!--                                <button class="layui-btn layui-btn-blue">查询</button>-->
-                    <!--                                <button class="layui-btn layui-btn-primary">重置</button>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
                     <table id="seatList" lay-filter="seat"></table>
                 </div>
             </div>
@@ -79,7 +55,6 @@
                         , {field: 'desktype', title: '桌子类型', width: 120, sort: true}
                         , {field: 'occupynum', title: '已选人数', width: 120, sort: true}
                         , {field: 'btn', align: 'center', title: '操作', width: 80, templet: addBtn}
-                        // , {fixed: 'right', width:150, align:'center', toolbar: '#btn'}
                     ]]
                     , data: response
                     , skin: 'line' //表格风格
@@ -95,7 +70,6 @@
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
-
             if (layEvent === 'order') { //查看
                 $.ajax({
                     url: '/seat/reserve',
@@ -114,6 +88,7 @@
                             closeBtn: 2,
                             time: 8000,//8秒后自动关闭
                         });
+                        $('table').find('button').addClass('layui-btn-disabled');
                         // console.log(data.occupynum.match((/\d+/g)));
                         // 刷新表格中的数据
                         obj.update({
