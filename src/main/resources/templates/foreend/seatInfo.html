@@ -10,6 +10,7 @@
     <title>座位信息</title>
 </head>
 <body class="layui-view-body">
+<div id="userid" hidden th:text="${session.user.getId()}"></div>
 <div class="layui-content">
     <div class="layui-row">
         <div class="layui-card">
@@ -116,7 +117,8 @@
                         // console.log(data.occupynum.match((/\d+/g)));
                         // 刷新表格中的数据
                         obj.update({
-                            occupynum: '已有 ' + (parseInt(data.occupynum.match((/\d+/g))[0]) + 1) + ' 人'
+                            occupynum: '已有 ' + (parseInt(data.occupynum.match((/\d+/g))[0]) + 1) + ' 人',
+                            btn: addBtn,
                         })
                     },
                     error: function () {
@@ -128,13 +130,28 @@
     });
 
     function addBtn(data) {
-        let html;
-        if (data.occupynum.match((/\d+/g))[0] === data.desktype.match((/\d+/g))[0]) { // 人数已满
-            html = '<button class="layui-btn layui-btn-blue layui-btn-sm layui-btn-disabled">预约</button>';
+        let userid = $('#userid').text();
+        let flag = false;
+        $.ajax({
+            async: false,
+            url: '/user/getState',
+            type: 'GET',
+            data: {
+                userid: userid
+            },
+            success: function (response) {
+                if (response) { // 已经预约，不可预约多次
+                    flag = response;
+                }
+            },
+        });
+        console.log(flag);
+
+        if (flag || data.occupynum.match((/\d+/g))[0] === data.desktype.match((/\d+/g))[0]) { // 人数已满
+            return '<button class="layui-btn layui-btn-blue layui-btn-sm layui-btn-disabled">预约</button>';
         } else {
-            html = '<button class="layui-btn layui-btn-blue layui-btn-sm" lay-event="order">预约</button>';
+            return '<button class="layui-btn layui-btn-blue layui-btn-sm" lay-event="order">预约</button>';
         }
-        return html;
     }
 </script>
 </body>

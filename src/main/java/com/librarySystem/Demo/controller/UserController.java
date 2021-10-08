@@ -35,4 +35,12 @@ public class UserController
     {
         return userService.getAllUser();
     }
+
+    @RequestMapping("/getState")
+    @ResponseBody
+    public Object getState(String userid)
+    {
+        return userService.getState(userid);
+    }
+
 }

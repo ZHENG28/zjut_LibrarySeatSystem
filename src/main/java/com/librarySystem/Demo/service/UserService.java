@@ -83,6 +83,12 @@ public class UserService
         return userDao.updateState(user.getId(), state) == 1;
     }
 
+    public Boolean getState(String userid)
+    {
+        User user = userDao.getCurInfo(userid);
+        return user.getState() != 0;
+    }
+
 //    public boolean register(String sno, String sname, String password, String campus)
 //    {
 //        return systemDao.register(sno, sname, password, campus) == 1;
