@@ -89,8 +89,17 @@
         <button class="but" type="button">返回主页</button>
     </a>
 </div>
+
+
 <script>
+    $(document).keydown(function (event) {
+        if (event.keyCode == 13) {//回车键对应code值为13
+            $("#loginBtn").click();
+        }
+    });
+
     $('#loginBtn').click(function () {
+        $('#errMsg').text("");
         let account = $("#account").val();
         let password = $("#password").val();
 

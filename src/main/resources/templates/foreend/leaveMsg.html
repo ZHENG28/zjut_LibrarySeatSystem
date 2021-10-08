@@ -25,13 +25,13 @@
                     <div class="layui-form layui-form-item">
                         <div class="layui-form-item layui-form-text">
                             <label class="layui-form-mid">
-                                <span th:text="${session.user.getName}"></span>
+                                <span id="username" th:text="${session.user.getName}"></span>
                                 <br/>
                                 <br/>
-                                <button class="layui-btn">发送</button>
+                                <button class="layui-btn" id="send">发送</button>
                             </label>
                             <div class="layui-input-block">
-                                <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                <textarea id="msg" name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
                             </div>
                         </div>
                     </div>
@@ -42,20 +42,20 @@
             <div class="layui-card-body">
                 <div class="form-box">
                     <div class="layui-form layui-form-item">
-                        <div class="layui-form-item layui-form-text">
+                        <div class="layui-form-item layui-form-text" id="leaveMsg">
                             <p>
                                 jdasjdadsj;alkd<br/>
-                                ——xxx
+                                <span class="leaveUsername"></span>
                             </p>
                             <hr/>
                             <p>
                                 jdasjdadsj;alkd<br/>
-                                ——xxx
+                                <span class="leaveUsername"></span>
                             </p>
                             <hr/>
                             <p>
                                 jdasjdadsj;alkd<br/>
-                                ——xxx
+                                <span class="leaveUsername"></span>
                             </p>
                         </div>
                     </div>
@@ -64,6 +64,19 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="../assets/js/jquery-3.6.0.js"></script>
 <script src="../assets/layui.js"></script>
+<script>
+    $(function (){
+        $('.leaveUsername').text("——"+$('#username').text());
+        $('#send').click(function (){
+            let msg = $("#msg").val();
+            console.log(msg);
+            msg = "<hr/><p>"+msg+"<br/>——"+$('#username').text() +"</p>";
+            $('#leaveMsg').append(msg);
+            $("#msg").val("");
+        })
+    })
+</script>
 </body>
 </html>
