@@ -101,6 +101,15 @@
             },
             contentType: "application/json;charset=UTF-8",
             success: function (response) {
+                for (let i = 0; i < response.length; i++) {
+                    response[i].campus += "校区";
+                    response[i].floor += "楼";
+                    response[i].deskno += "号桌";
+                    response[i].desktype += "人座";
+                    response[i].occupynum = "已有 " + response[i].occupynum + " 人";
+                }
+
+                //展示已知数据
                 table.render({
                     elem: "#recommend"
                     , cols: [[//标题栏
@@ -110,7 +119,7 @@
                         , {field: 'deskno', title: '桌号', width: 100, sort: true}
                         , {field: 'desktype', title: '桌子类型', width: 120, sort: true}
                         , {field: 'occupynum', title: '已选人数', width: 120, sort: true}
-                        , {field: 'btn', align: 'center', title: '操作', width: 80, toolbar: '#btn'}
+                        , {field: 'btn', align: 'center', title: '操作', width: 80, templet: addBtn}
                     ]]
                     , data: response
                     , skin: 'line' //表格风格
@@ -118,8 +127,70 @@
                     , page: false //是否显示分页
                 });
             }
-        })
-    })
+        });
+
+        table.on('tool(seatRecommend)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data; //获得当前行数据
+            var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+            var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+            if (layEvent === 'order') { //查看
+                $.ajax({
+                    url: '/seat/reserve',
+                    type: 'post',
+                    data: {
+                        seatId: data.seatid
+                    },
+                    success: function (msg) {
+                        let content = msg ? "成功" : "失败";
+                        layer.open({
+                            skin: 'layui-layer-lan',//皮肤，可选，这里用了内置参数
+                            offset: '100px',//相对于内嵌页面
+                            title: "预约信息",
+                            type: 0,//信息框
+                            content: "预约" + content,
+                            closeBtn: 2,
+                            time: 8000,//8秒后自动关闭
+                        });
+                        $('table').find('button').addClass('layui-btn-disabled');
+                        // console.log(data.occupynum.match((/\d+/g)));
+                        // 刷新表格中的数据
+                        obj.update({
+                            occupynum: '已有 ' + (parseInt(data.occupynum.match((/\d+/g))[0]) + 1) + ' 人',
+                            btn: addBtn,
+                        })
+                    },
+                    error: function () {
+                        console.log("error!")
+                    }
+                })
+            }
+        });
+    });
+
+    function addBtn(data) {
+        let userid = $('#userid').text();
+        let flag = false;
+        $.ajax({
+            async: false,
+            url: '/user/getState',
+            type: 'GET',
+            data: {
+                userid: userid
+            },
+            success: function (response) {
+                if (response) { // 已经预约，不可预约多次
+                    flag = response;
+                }
+            },
+        });
+        console.log(flag);
+
+        if (flag || data.occupynum.match((/\d+/g))[0] === data.desktype.match((/\d+/g))[0]) { // 人数已满
+            return '<button class="layui-btn layui-btn-blue layui-btn-sm layui-btn-disabled">预约</button>';
+        } else {
+            return '<button class="layui-btn layui-btn-blue layui-btn-sm" lay-event="order">预约</button>';
+        }
+    }
 </script>
 </body>
 </html>
