@@ -14,9 +14,9 @@ let text = "浙江工业大学\n图书馆选座系统",
 
     font = undefined;
 
-const height = 15,
-    size = 50,
-    hover = 80,
+const height = 20,
+    size = 55,
+    hover = 90,
 
     curveSegments = 4,
 
@@ -70,7 +70,7 @@ function init() {
     ];
 
     group = new THREE.Group();
-    group.position.y = 100;
+    group.position.y = 80;
     scene.add(group);
 
     loadFont();

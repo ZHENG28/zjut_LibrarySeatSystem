@@ -76,6 +76,12 @@ public class ForeendViewController
         return v + "seatInfo";
     }
 
+    @GetMapping("/history")
+    public String history()
+    {
+        return v + "history";
+    }
+
     // 其他工具
     @GetMapping("/searchBook")
     public String searchBook()
@@ -83,7 +89,13 @@ public class ForeendViewController
         return v + "searchBook";
     }
 
+    @GetMapping("/leaveMsg")
+    public String leaveMsg()
+    {
+        return v + "leaveMsg";
+    }
 
+    // other
     @GetMapping("/form")
     public String form()
     {
@@ -100,11 +112,5 @@ public class ForeendViewController
     public String operaterule()
     {
         return v + "operaterule";
-    }
-
-    @GetMapping("/history")
-    public String history()
-    {
-        return v + "history";
     }
 }
