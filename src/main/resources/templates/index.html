@@ -108,8 +108,8 @@
     <hr style="clear: both">
     <form action="./login" method="post" name="loginForm">
         <select class="choice" name="identity" id="identity" required autofocus>
-            <option value="" id="choose_all" selected>选择身份</option>
-            <option value="1">学生</option>
+            <option value="" id="choose_all">选择身份</option>
+            <option value="1" selected>学生</option>
             <option value="0">教师</option>
         </select><br>
         <input type="text" name="account" id="account" placeholder="账号" required><br>
@@ -158,6 +158,12 @@
     let i = 0;
     //                let autoPlay = true;
 
+    $(document).keydown(function (event) {
+        if (event.keyCode == 13) {//回车键对应code值为13
+            $("#loginBtn").click();
+        }
+    });
+
     let mark = (function () {
         let scan;
 
@@ -204,6 +210,7 @@
 
     // 用户登录
     function login() {
+        $('#errMsg').text("");
         let identity = $("#identity>option:selected").val();
         let account = $("#account").val();
         let password = $("#password").val();
