@@ -54,4 +54,13 @@ public class SeatController
         User user = (User) request.getSession().getAttribute("user");
         return seatService.reserve(user.getId(), seatId, new Date());
     }
+
+    @RequestMapping("/update")
+    @ResponseBody
+    public Object updateSeat(HttpServletRequest request)
+    {
+        User user = (User) request.getSession().getAttribute("user");
+        return seatService.update(user.getId());
+    }
+
 }

@@ -92,4 +92,28 @@ public class SeatService
 
         return i == 3;
     }
+
+    public Map<String, Object> update(String id)
+    {
+        Map<String, Object> info = new HashMap<>();
+        User user = userDao.getCurInfo(id);
+        user.setSeat(getSeatById(user.getSeatId()));
+
+        String curState = "";
+        switch (user.getState()) {
+            case 0:
+                curState = "尚未选座";
+                break;
+            case 1:
+                curState = "已选座";
+                break;
+            case 2:
+                curState = "暂离座位";
+                break;
+        }
+        info.put("state", curState);
+        info.put("violate", user.getViolate() + "次");
+        info.put("seatInfo", user.getSeat() != null ? user.getSeat().getDeskInfo() : "");
+        return info;
+    }
 }

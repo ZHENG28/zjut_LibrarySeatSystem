@@ -62,15 +62,36 @@
             dataType: "json",
             contentType: "application/json;charset=UTF-8",
             success: function (response) {
-                $("#signin").addClass(response.signin ? "" : "layui-btn-disabled");
-                $("#signout").addClass(response.signout ? "" : "layui-btn-disabled");
-                $("#signin").removeAttr(response.signin ? "" : "onclick");
-                $("#signout").removeAttr(response.signout ? "" : "onclick");
-                $("#stop").addClass(response.stop ? "" : "layui-btn-disabled");
-                $("#back").addClass(response.back ? "" : "layui-btn-disabled");
-                $("#stop").removeAttr(response.stop ? "" : "onclick");
-                $("#back").removeAttr(response.back ? "" : "onclick");
+                // true-可用：显示正常（无disabled样式-->remove），可点击（onclick可用）
+                // false-不可用 -->add
+                updateSeat();
+
+                response.signin ? $("#signin").removeClass("layui-btn-disabled") : $("#signin").addClass("layui-btn-disabled");
+                $("#signin").attr("disabled", !response.signin);
+
+                response.signout ? $("#signout").removeClass("layui-btn-disabled") : $("#signout").addClass("layui-btn-disabled");
+                $("#signout").attr("disabled", !response.signout);
+
+                response.stop ? $("#stop").removeClass("layui-btn-disabled") : $("#stop").addClass("layui-btn-disabled");
+                $("#stop").attr("disabled", !response.stop);
+
+                response.back ? $("#back").removeClass("layui-btn-disabled") : $("#back").addClass("layui-btn-disabled");
+                $("#back").attr("disabled", !response.back);
             }
+        });
+    }
+
+    function updateSeat() {
+        $.ajax({
+            url: "/seat/update",
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json;charset=UTF-8",
+            success: function (response) {
+                $("#seatId").text(response.seatInfo);
+                $("#state").text(response.state);
+                $("#violate").text(response.violate);
+            },
         });
     }
 

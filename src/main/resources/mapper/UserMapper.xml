@@ -24,7 +24,8 @@
     <update id="reserve">
         update userinfo
         set seatid=#{seatId},
-            reservetime=#{time}
+            reservetime=#{time},
+            state=1
         where id = ${userId}
     </update>
     <update id="signOut">
@@ -38,6 +39,11 @@
     <select id="getAll" resultType="com.librarySystem.Demo.entity.User">
         select *
         from userinfo
+    </select>
+    <select id="getCurInfo" resultType="com.librarySystem.Demo.entity.User">
+        select *
+        from userinfo
+        where id = #{userId}
     </select>
 
     <!--    <insert id="register">-->

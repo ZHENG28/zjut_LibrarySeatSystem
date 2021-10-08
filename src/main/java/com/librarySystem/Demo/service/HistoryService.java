@@ -23,11 +23,6 @@ public class HistoryService
     @Autowired
     UserDao userDao;
 
-    public History getHistoryByUser(User user)
-    {
-        return historyDao.getHistoryByUser(user.getId(), user.getSeatId(), user.getReservetime());
-    }
-
     public List<Map<String, Object>> getAllByUserId(String userid)
     {
         List<History> list = historyDao.getAllUserHistory(userid);

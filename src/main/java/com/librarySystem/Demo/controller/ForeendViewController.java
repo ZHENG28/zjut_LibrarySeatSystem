@@ -1,5 +1,6 @@
 package com.librarySystem.Demo.controller;
 
+import com.librarySystem.Demo.dao.UserDao;
 import com.librarySystem.Demo.entity.User;
 import com.librarySystem.Demo.service.SeatService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ public class ForeendViewController
 {
     @Autowired
     SeatService seatService;
+
+    @Autowired
+    UserDao userDao;
 
     String v = "foreend/";
 
@@ -44,8 +48,8 @@ public class ForeendViewController
     {
         ModelAndView mv = new ModelAndView();
         User user = (User) request.getSession().getAttribute("user");
+        user = userDao.getCurInfo(user.getId());
         user.setSeat(seatService.getSeatById(user.getSeatId()));
-        System.out.println(user.getSeat());
 
         String curState = "";
         switch (user.getState()) {
@@ -99,7 +103,8 @@ public class ForeendViewController
     }
 
     @GetMapping("/history")
-    public String history(){
-        return v+"history";
+    public String history()
+    {
+        return v + "history";
     }
 }

@@ -25,28 +25,28 @@
         <div class="layui-card">
             <div class="layui-card-body">
                 <div class="form-box">
-                    <div class="layui-form layui-form-item">
-                        <div class="layui-inline">
-                            <div class="layui-form-mid">院区:</div>
-                            <div class="layui-input-inline" style="width: 100px;">
-                                <input type="text" autocomplete="off" class="layui-input">
-                            </div>
-                            <div class="layui-form-mid">楼层:</div>
-                            <div class="layui-input-inline" style="width: 100px;">
-                                <input type="text" autocomplete="off" class="layui-input">
-                            </div>
-                            <div class="layui-form-mid">桌号:</div>
-                            <div class="layui-input-inline" style="width: 100px;">
-                                <input type="text" autocomplete="off" class="layui-input">
-                            </div>
-                            <div class="layui-form-mid">状态:</div>
-                            <div class="layui-input-inline" style="width: 100px;">
-                                <input type="text" autocomplete="off" class="layui-input">
-                            </div>
-                            <button class="layui-btn layui-btn-blue">查询</button>
-                            <button class="layui-btn layui-btn-primary">重置</button>
-                        </div>
-                    </div>
+                    <!--                    <div class="layui-form layui-form-item">-->
+                    <!--                        <div class="layui-inline">-->
+                    <!--                            <div class="layui-form-mid">院区:</div>-->
+                    <!--                            <div class="layui-input-inline" style="width: 100px;">-->
+                    <!--                                <input type="text" autocomplete="off" class="layui-input">-->
+                    <!--                            </div>-->
+                    <!--                            <div class="layui-form-mid">楼层:</div>-->
+                    <!--                            <div class="layui-input-inline" style="width: 100px;">-->
+                    <!--                                <input type="text" autocomplete="off" class="layui-input">-->
+                    <!--                            </div>-->
+                    <!--                            <div class="layui-form-mid">桌号:</div>-->
+                    <!--                            <div class="layui-input-inline" style="width: 100px;">-->
+                    <!--                                <input type="text" autocomplete="off" class="layui-input">-->
+                    <!--                            </div>-->
+                    <!--                            <div class="layui-form-mid">状态:</div>-->
+                    <!--                            <div class="layui-input-inline" style="width: 100px;">-->
+                    <!--                                <input type="text" autocomplete="off" class="layui-input">-->
+                    <!--                            </div>-->
+                    <!--                            <button class="layui-btn layui-btn-blue">查询</button>-->
+                    <!--                            <button class="layui-btn layui-btn-primary">重置</button>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
                     <a href="insertSeats.html">
                         <button class="layui-btn layui-btn-blue"><i class="layui-icon">&#xe654;</i>新增</button>
                     </a>
@@ -66,49 +66,39 @@
     let table = layui.table;
     let form = layui.form;
 
-    // ($.ajax(function () {
-    //
-    // }));
+    ($.ajax({
+        url: "/layout/getList",
+        type: "GET",
+        dataType: "json",
+        success: function (response) {
+            //展示已知数据
+            let tab = table.render({
+                elem: '#seatList'
+                , cols: [[//标题栏
+                    {field: 'id', title: '编号', width: 150, sort: true}
+                    , {field: 'campus', title: '校区', width: 150, sort: true}
+                    , {field: 'floor', title: '楼层', width: 150, sort: true}
+                    , {field: 'content', title: '布局内容', width: 400, sort: true}
+                ]]
+                , toolbar: '#btn'
+                , id: 'tab'
+                , data: response
+                , skin: 'line' //表格风格
+                , even: true
+                , page: true //是否显示分页
+                , limits: [5, 10, 20, 50, 100]
+                , limit: 10 //每页默认显示的数量
+            });
+            //导出为Excel
+            table.on('toolbar(seat)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
 
-    //展示已知数据
-    let tab = table.render({
-        elem: '#seatList'
-        , cols: [[//标题栏
-            {field: 'campus', title: '校区', width: 150, sort: true}
-            , {field: 'floor', title: '楼层', width: 120, sort: true}
-            , {field: 'deskno', title: '桌号', width: 100, sort: true}
-            , {field: 'deskno', title: '桌子类型', width: 120, sort: true}
-            , {field: 'occupynum', title: '已选人数', minWidth: 200, sort: true}
-        ]]
-        , toolbar:'#btn'
-        , id: 'tab'
-        , data: [{
-            "floor": "1",
-            "campus": "zh",
-            "deskno": "1",
-            "type": "e",
-            "occupynum": "0"
-        }, {
-            "floor": "1",
-            "campus": "zh",
-            "deskno": "1",
-            "type": "e",
-            "occupynum": "0"
-        }]
-        , skin: 'line' //表格风格
-        , even: true
-        , page: true //是否显示分页
-        , limits: [5, 10, 20, 50, 100]
-        , limit: 10 //每页默认显示的数量
-    });
-    //导出为Excel
-    table.on('toolbar(seat)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
-
-        let event = obj.event;
-        if (event == "export") {
-            table.exportFile(tab.config.id, tab.config.data);//data后面可以再加一个导出类型，复制后面的进括号就行    ,'xls'
+                let event = obj.event;
+                if (event == "export") {
+                    table.exportFile(tab.config.id, tab.config.data);//data后面可以再加一个导出类型，复制后面的进括号就行    ,'xls'
+                }
+            })
         }
-    })
+    }));
 </script>
 </body>
 </html>

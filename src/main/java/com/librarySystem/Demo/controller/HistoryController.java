@@ -1,5 +1,6 @@
 package com.librarySystem.Demo.controller;
 
+import com.librarySystem.Demo.dao.UserDao;
 import com.librarySystem.Demo.entity.History;
 import com.librarySystem.Demo.entity.User;
 import com.librarySystem.Demo.service.HistoryService;
@@ -26,6 +27,9 @@ public class HistoryController
     @Autowired
     SeatService seatService;
 
+    @Autowired
+    UserDao userDao;
+
     @GetMapping("/getAll")
     @ResponseBody
     public Object getAll()
@@ -46,6 +50,7 @@ public class HistoryController
     {
         Date date = new Date();
         User user = (User) request.getSession().getAttribute("user");
+        user = userDao.getCurInfo(user.getId());
         return historyService.signIn(user.getId(), user.getSeatId(), user.getReservetime(), date);
     }
 
@@ -55,6 +60,7 @@ public class HistoryController
     {
         Date date = new Date();
         User user = (User) request.getSession().getAttribute("user");
+        user = userDao.getCurInfo(user.getId());
         return seatService.signOut(user, date);
     }
 }

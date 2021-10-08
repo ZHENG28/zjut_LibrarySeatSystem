@@ -25,7 +25,7 @@
                 <a href="javascript:;" th:text="${session.user.getName}">用户名</a>
                 <dl class="layui-nav-child">
                     <dd><a href="foreend/userInfo">个人信息</a></dd>
-                    <dd><a href="javascript:;">帮助中心</a></dd>
+                    <dd><a href="javascript:;" onclick="toHelp()">帮助中心</a></dd>
                     <dd><a href="/logout"><i class="layui-icon layui-icon-return"></i> 退出</a></dd>
                 </dl>
             </li>
@@ -59,7 +59,7 @@
                         <dd><a href="foreend/qrcode"><i class="layui-icon layui-icon-chart-screen"></i>查看当前选座情况</a></dd>
                         <dd><a href="foreend/seatInfo"><i class="layui-icon layui-icon-list"></i>查看所有座位信息</a></dd>
                         <dd><a href="foreend/history"><i class="layui-icon layui-icon-list"></i>查看历史选座记录</a></dd>
-<!--                        <dd><a href="javascript:;"><i class="layui-icon layui-icon-list"></i>查看历史选座记录</a></dd>-->
+                        <!--                        <dd><a href="javascript:;"><i class="layui-icon layui-icon-list"></i>查看历史选座记录</a></dd>-->
                     </dl>
                 </li>
                 <li class="layui-nav-item">
@@ -93,5 +93,44 @@
 </div>
 <script src="assets/layui.js"></script>
 <script src="assets/custom/js/index.js" data-main="home"></script>
+<script type="text/javascript">
+    function toHelp() {
+        let content = "    <p class=\"written\">1、预约：读者可登录此界面预约当日座位。<br>\n" +
+            "        2、取消预约：可在预约生效后30分钟内取消。<br>\n" +
+            "        3、签到：<br>\n" +
+            "        &nbsp;（1）读者成功预约后需在一小时内进馆并扫描桌上二维码进行签到。<br>\n" +
+            "        &nbsp;（2）若未按时签到，系统视为失约处理一次。<br>\n" +
+            "        4、离座离馆：<br>\n" +
+            "        &nbsp;（1）正常离馆：读者需扫描桌上的二维码选择“离馆”。<br>\n" +
+            "        &nbsp;（2）饭点时间离馆（中饭：11：30-13：00 晚饭：17：00-18：30）：读者可在此时间段内通过入馆口刷卡离馆，出馆时间限制为1h,回馆可直接刷卡入馆。（此过程无需扫码）<br>\n" +
+            "        &nbsp;（3）临时离馆：<br>\n" +
+            "        &nbsp;&nbsp; &nbsp;①馆内：读者需扫描桌上的二维码选择“临时离座”，时间限制为30分钟，回座后需再次扫描二维码进行“临时离座签到”。<br>\n" +
+            "        &nbsp;&nbsp;&nbsp; ②馆外：读者需扫描桌上的二维码选择“临时出馆”，时间限制为30分钟，回馆可直接刷卡入馆，无需再次扫码。<br>\n" +
+            "        &nbsp;（4）以上未在规定时间内回馆签到，系统视为失约处理一次。<br>\n" +
+            "        5、失约处理：<br>\n" +
+            "        &nbsp;（1）系统建立信用制度，读者当月违规次数满5次，不能进行座位预约。<br>\n" +
+            "        &nbsp;（2）读者可在此网页点击“个人中心”查看个人违规次数。<br>\n" +
+            "        &nbsp;（3）次月，系统违规记录将进行刷新，所有违规次数归零，恢复座位预约权限。<br>\n" +
+            "        6、推荐预约：根据读者以往选座情况，系统自动推荐5-10个仍为空位状态的位置。<br>\n" +
+            "        7、如果您有任何意见或建议，请联系：8888888888<br></p>";
+
+        let index = layer.open({
+            skin: 'layui-layer-lan',//皮肤，可选，这里用了内置参数
+            area: '450px',
+            offset: '100px',//相对于内嵌页面
+            title: '预约规则',
+            type: 0, //信息框
+            // content: '传入任意的文本或html', //content是可以是 string或者html
+            content: content,
+            closeBtn: 2,//两种关闭按钮（1和2）,自己挑选
+            // time: 8000,//8秒后自动关闭
+            yes: function (index, layero) {
+                //按确定后执行的函数，‘yes’属性可删
+
+                layer.close(index); //如果设定了yes回调，需进行手工关闭
+            }
+        });
+    }
+</script>
 </body>
 </html>
