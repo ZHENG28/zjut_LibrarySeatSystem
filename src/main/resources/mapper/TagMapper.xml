@@ -7,4 +7,9 @@
         select *
         from tag
     </select>
+    <select id="getTagName" resultType="java.lang.String">
+        select tag
+        from tag
+        where id = #{s}
+    </select>
 </mapper>

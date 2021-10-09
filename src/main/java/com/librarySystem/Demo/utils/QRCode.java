@@ -58,7 +58,7 @@ public class QRCode {
 
         String name = user.getName();
 //        String filepath = "./src/main/resources/static/res/qrcode";//相对路径
-        String filepath = "E:\\代码\\Library by sp-boot\\zjut_LibrarySeatSystem\\src\\main\\resources\\static\\res\\qrcode";//绝对路径
+        String filepath = "E:\\Desktop\\PROJECT\\Library Seat\\LibrarySystem\\LibrarySystem\\src\\main\\resources\\static\\res\\qrcode";//绝对路径
         File file = new File(filepath);
         System.out.println("图片存储路径为:"+file.getAbsolutePath());
         if (!file.exists()) {

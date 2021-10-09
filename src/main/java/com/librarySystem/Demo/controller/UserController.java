@@ -43,4 +43,10 @@ public class UserController
         return userService.getState(userid);
     }
 
+    @RequestMapping("/getLikeTag")
+    @ResponseBody
+    public Object getLikeTag(String userid)
+    {
+        return userService.getLikeTag(userid);
+    }
 }

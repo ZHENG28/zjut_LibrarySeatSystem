@@ -1,14 +1,14 @@
 package com.librarySystem.Demo.service;
 
 import com.librarySystem.Demo.dao.HistoryDao;
+import com.librarySystem.Demo.dao.TagDao;
 import com.librarySystem.Demo.dao.UserDao;
 import com.librarySystem.Demo.entity.History;
 import com.librarySystem.Demo.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class UserService
@@ -18,6 +18,9 @@ public class UserService
 
     @Autowired
     HistoryDao historyDao;
+
+    @Autowired
+    TagDao tagDao;
 
     public boolean findByIdentity(String identity, String account)
     {
@@ -87,6 +90,17 @@ public class UserService
     {
         User user = userDao.getCurInfo(userid);
         return user.getState() != 0;
+    }
+
+    public String getLikeTag(String userid)
+    {
+        String liketag = userDao.getCurInfo(userid).getLiketag();
+        String[] tagList = liketag.split(",");
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < tagList.length; i++) {
+            sb.append(tagDao.getTagName(Integer.parseInt(tagList[i])) + ", ");
+        }
+        return sb.substring(0, sb.length() - 2);
     }
 
 //    public boolean register(String sno, String sname, String password, String campus)

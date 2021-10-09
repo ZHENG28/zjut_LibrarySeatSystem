@@ -9,4 +9,6 @@ import java.util.List;
 public interface TagDao
 {
     List<Tag> getAllTag();
+
+    String getTagName(int s);
 }
