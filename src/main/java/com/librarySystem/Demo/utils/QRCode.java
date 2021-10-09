@@ -57,7 +57,8 @@ public class QRCode {
         hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);// 优化扫描精度，增加解析成功率
 
         String name = user.getName();
-        String filepath = "./src/main/resources/static/res/qrcode";
+//        String filepath = "./src/main/resources/static/res/qrcode";//相对路径
+        String filepath = "E:\\代码\\Library by sp-boot\\zjut_LibrarySeatSystem\\src\\main\\resources\\static\\res\\qrcode";//绝对路径
         File file = new File(filepath);
         System.out.println("图片存储路径为:"+file.getAbsolutePath());
         if (!file.exists()) {
