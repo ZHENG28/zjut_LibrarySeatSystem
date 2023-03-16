@@ -16,20 +16,7 @@
     1. 使用项目下的res/db/create.sql文件初始化数据库
     2. 修改配置文件application.properties中的各项参数：`spring.datasource.url`和`spring.datasource.password`
 ### 2 页面展示
-#### 1 管理员端
-1. 登陆页面：
-    ![admin-login](/res/img/admin_login.jpg)
-2. 主页：
-    ![admin-home](/res/img/admin_homePage.jpg)
-3. 查看座位信息：
-    ![admin-seatInfo](/res/img/admin_seatInfo.jpg)
-4. 新增座位表：
-    ![admin-insertSeat](/res/img/admin_insertSeat.jpg)
-5. 用户信息管理：
-    ![admin-userInfo](/res/img/admin_userInfo.jpg)
-6. 用户选座记录：
-    ![admin-userHistory](/res/img/admin_userHistory.jpg)
-#### 2 用户端（教师与学生页面相同，均只有选座功能）
+#### 1 用户端（教师与学生页面相同，均只有选座功能）
 1. 登陆页面：
     ![user-login](/res/img/index.jpg)
 2. 主页：
@@ -42,3 +29,16 @@
     ![user-seatInfo](/res/img/user_seatInfo.jpg)
 6. 留言反馈：
     ![user-leaveMsg](/res/img/user_leaveMsg.jpg)
+#### 2 管理员端
+1. 登陆页面：
+    ![admin-login](/res/img/admin_login.jpg)
+2. 主页：
+    ![admin-home](/res/img/admin_homePage.jpg)
+3. 查看座位信息：
+    ![admin-seatInfo](/res/img/admin_seatInfo.jpg)
+4. 新增座位表：
+    ![admin-insertSeat](/res/img/admin_insertSeat.jpg)
+5. 用户信息管理：
+    ![admin-userInfo](/res/img/admin_userInfo.jpg)
+6. 用户选座记录：
+    ![admin-userHistory](/res/img/admin_userHistory.jpg)
