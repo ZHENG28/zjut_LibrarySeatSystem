@@ -62,14 +62,28 @@
             dataType: "json",
             contentType: "application/json;charset=UTF-8",
             success: function (response) {
-                // for (let i = 0; i < response.length; i++) {
-                //     response[i].campus += "校区";
-                //     response[i].floor += "楼";
-                //     response[i].deskno += "号桌";
-                //     response[i].desktype += "人座";
-                //     response[i].occupynum = "已有 " + response[i].occupynum + " 人";
-                // }
-
+                for (let i = 0; i < response.length; i++) {
+                    switch (response[i].identity) {
+                        case 0:
+                            response[i].identity = "老师";
+                            break;
+                        case 1:
+                            response[i].identity = "学生";
+                            break;
+                    }
+                    switch (response[i].state) {
+                        case 0:
+                            response[i].state = "未占座";
+                            break;
+                        case 1:
+                            response[i].state = "已选座";
+                            break;
+                        case 2:
+                            response[i].state = "暂离";
+                            break;
+                    }
+                }
+                
                 //展示已知数据
                 table.render({
                     elem: '#userList'
