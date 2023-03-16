@@ -11,7 +11,7 @@
         4. 可查询收录在图书馆中的所有书籍，以及留言反馈
 - 所用技术：
 	- 前端：HTML+CSS+JavaScript、layui、ajax、three.js
-	- 后端：Spring+SpringMVC+Mybatis框架、生成二维码（com.google.zxing）
+	- 后端：Spring+SpringMVC+Mybatis框架、MySQL数据库、生成二维码（com.google.zxing）
 - 项目启动命令：
     1. 使用项目下的res/db/create.sql文件初始化数据库
     2. 修改配置文件application.properties中的各项参数：`spring.datasource.url`和`spring.datasource.password`
